@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuad Alizada | Modern Developer</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom gradient animation */
+    @keyframes gradient-bg {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .gradient-bg {
+      background: linear-gradient(270deg, #ff7e5f, #feb47b, #6a82fb, #fc5c7d);
+      background-size: 400% 400%;
+      animation: gradient-bg 10s ease infinite;
+    }
+
+    /* Smooth Scroll Effect */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom Floating Navigation */
+    .floating-nav {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 50;
+    }
+
+    .floating-nav a {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      padding: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    .floating-nav a:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Scroll Indicator */
+    .scroll-indicator {
+      position: fixed;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 18px;
+      text-transform: uppercase;
+      color: #ffffff;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100 font-sans leading-relaxed tracking-wide">
+
+  <!-- Floating Navigation (Replaces Navbar) -->
+  <div class="floating-nav">
+    <a href="#hero" title="Home" class="bg-pink-600 hover:bg-pink-500 transition">
+      <img src="https://img.icons8.com/ios-glyphs/30/ffffff/home.png" />
+    </a>
+    <a href="#skills" title="Skills" class="bg-purple-600 hover:bg-purple-500 transition">
+      <img src="https://img.icons8.com/ios-glyphs/30/ffffff/stack.png" />
+    </a>
+    <a href="#projects" title="Projects" class="bg-blue-600 hover:bg-blue-500 transition">
+      <img src="https://img.icons8.com/ios-glyphs/30/ffffff/code.png" />
+    </a>
+    <a href="#contact" title="Contact" class="bg-green-600 hover:bg-green-500 transition">
+      <img src="https://img.icons8.com/ios-glyphs/30/ffffff/send-letter.png" />
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section id="hero" class="min-h-screen flex items-center justify-center gradient-bg">
+    <div class="text-center">
+      <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight">
+        Crafting Experiences, Building the Web
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-gray-200 max-w-xl mx-auto">
+        Hi, I'm <strong>Fuad Alizada</strong> – A creative developer turning ideas into real web experiences. Let's
+        build something amazing together.
+      </p>
+      <a href="#projects" class="mt-8 inline-block px-8 py-4 bg-pink-600 text-white rounded-full hover:bg-pink-500 transition">
+        Explore My Projects
+      </a>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-20 bg-gray-900 text-center">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Tech Stack & Skills</h2>
+      <p class="mt-6 text-lg text-gray-400">
+        Here are some of the tools I work with to build fast, modern, and scalable web applications.
+      </p>
+
+      <!-- Tech Grid -->
+      <div class="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/html-5--v1.png" alt="HTML" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">HTML</span>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/css3.png" alt="CSS" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">CSS</span>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/javascript--v1.png" alt="JavaScript" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">JavaScript</span>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/react-native.png" alt="React" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">React</span>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/nodejs.png" alt="Node.js" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">Node.js</span>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/mongodb.png" alt="MongoDB" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">MongoDB</span>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/tailwindcss.png" alt="TailwindCSS" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">TailwindCSS</span>
+        </div>
+        <div class="p-6 bg-gray-800 rounded-lg hover:bg-gray-700 transition">
+          <img src="https://img.icons8.com/color/48/git.png" alt="Git" class="mx-auto mb-4" />
+          <span class="text-lg text-gray-100">Git</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-20 bg-gray-900 text-center">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Recent Projects</h2>
+      <p class="mt-6 text-lg text-gray-400">
+        Check out some of my recent projects where I've helped create engaging, user-friendly applications.
+      </p>
+
+      <!-- Project Grid -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Project Card 1 -->
+        <div class="bg-gray-800 p-6 rounded-lg hover:shadow-2xl transition duration-300">
+          <h4 class="text-xl text-gray-100 font-semibold">Trading Bot</h4>
+          <p class="mt-2 text-gray-400">A web application for automated trading using Flask, Tailwindcss, JavaScript</p>
+          <a href="https://fuad123.pythonanywhere.com/" class="mt-4 block text-pink-500 hover:underline">View Project</a>
+        </div>
+        <!-- Project Card 2 -->
+        <div class="bg-gray-800 p-6 rounded-lg hover:shadow-2xl transition duration-300">
+          <h4 class="text-xl text-gray-100 font-semibold">Vide Call</h4>
+          <p class="mt-2 text-gray-400">A Video call app with Django, Html, Css, JavaScript for better performance in weak connections</p>
+          <a href="#" class="mt-4 block text-pink-500 hover:underline">View Project</a>
+        </div>
+        <!-- Project Card 3 -->
+        <div class="bg-gray-800 p-6 rounded-lg hover:shadow-2xl transition duration-300">
+          <h4 class="text-xl text-gray-100 font-semibold">Project 3</h4>
+          <p class="mt-2 text-gray-400">A personal portfolio built using TailwindCSS and smooth animations.</p>
+          <a href="#" class="mt-4 block text-pink-500 hover:underline">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gray-900 text-center">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Get in Touch</h2>
+      <p class="mt-6 text-lg text-gray-400">
+        Have an exciting project in mind or want to discuss an idea? Let's work together!
+      </p>
+
+      <!-- No forms, inputs with specific IDs -->
+      <div class="mt-12 max-w-2xl mx-auto">
+        <div class="mb-6">
+          <input id="name" type="text" class="w-full p-4 bg-gray-800 text-gray-200 rounded-lg" placeholder="Your Name" required>
+        </div>
+        <div class="mb-6">
+          <input id="email" type="email" class="w-full p-4 bg-gray-800 text-gray-200 rounded-lg" placeholder="Your Email" required>
+        </div>
+        <div class="mb-6">
+          <textarea id="message" class="w-full p-4 bg-gray-800 text-gray-200 rounded-lg" rows="5" placeholder="Your Message" required></textarea>
+        </div>
+        <button id="sendMessage" class="px-8 py-4 bg-pink-600 text-white rounded-lg hover:bg-pink-500 transition">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-gray-800 text-center">
+    <p class="text-gray-400">Designed & Built by Fuad Alizada &copy; 2024</p>
+  </footer>
+
+  <script>
+    document.getElementById("sendMessage").addEventListener("click", async function () {
+      // Gather form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      // Create a JSON object with the data
+      const jsonData = {
+        name: name,
+        email: email,
+        message: message
+      };
+
+      try {
+        const response = await fetch("/send-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jsonData)  // Send JSON data
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          alert("Your message has been saved successfully!");
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('message').value = '';  // Reset inputs after successful submission
+        } else {
+          alert("There was an error saving your message. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An unexpected error occurred. Please try again.");
+      }
+    });
+  </script>
+</body>
+
+</html>

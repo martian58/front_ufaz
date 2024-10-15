@@ -25,6 +25,14 @@ def cvnocss():
 def cvwithcss():
     return render_template('pw1/cvwithcss.html')
 
+@app.route('/pw2')
+def pw2():
+    return render_template('pw2/pw2.html')
+
+@app.route('/pw2tail')
+def pw2tail():
+    return render_template('pw2/pw2_tail.html')
+
 
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])

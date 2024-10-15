@@ -34,6 +34,11 @@ def pw2tail():
     return render_template('pw2/pw2_tail.html')
 
 
+@app.route('/pw3')
+def pw3():
+    return render_template('pw3/pw3.html')
+
+
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])
 def save_message():

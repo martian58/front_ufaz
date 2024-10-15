@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+/* Common styles NE PAS MODIFIER */
+body, html{
+  padding:0;
+  margin:0;
+  background:#999;
+  width:100vw;
+  min-height:100vh;
+}
+header{
+  background:#feb;
+}
+article{
+  background:#dd8;
+}
+nav{
+  background:#ccf;
+}
+aside{
+  background:#ccf;
+}
+footer{
+  background:#feb;
+}
+header, article, nav, aside, footer{
+  border-radius:5px;
+  padding:5px;
+}
+
+/* Votre code CSS pour design par Grid ci-après */
+
+/* 1. CSS Variables for Maintainability */
+:root {
+  --background-color: #999;
+  --header-footer-bg: #feb;
+  --nav-aside-bg: #ccf;
+  --article-bg: #dd8;
+  --text-color: #333;
+  --border-radius: 5px;
+  --padding-desktop: 20px;
+  --padding-tablet: 15px;
+  --padding-mobile: 10px;
+  --gap-desktop: 30px;
+  --gap-tablet: 20px;
+  --gap-mobile: 10px;
+  --min-nav-aside-width: 150px;
+  --max-nav-aside-width: 250px;
+  --min-header-footer-height: 60px;
+  --min-mobile-header-footer-height: 50px;
+  --min-mobile-article-height: 200px;
+}
+
+/* 2. Box-Sizing for Consistent Element Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 3. Base Typography */
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  color: var(--text-color);
+  background: var(--background-color);
+}
+
+/* 4. Responsive Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1rem 0;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* 5. Desktop Layout: Screens with a minimum width of 640px */
+@media (min-width: 640px) {
+  body {
+    display: grid;
+    /* Setting a fixed width for nav and aside, and making article flexible */
+    grid-template-columns: var(--min-nav-aside-width) 1fr var(--max-nav-aside-width); /* nav | article | aside */
+    grid-template-rows: minmax(var(--min-header-footer-height), auto) 1fr minmax(var(--min-header-footer-height), auto); /* header | content | footer */
+    grid-template-areas:
+      "header header header"
+      "nav article aside"
+      "footer footer footer";
+    gap: var(--gap-desktop); /* Gutter between grid items */
+    padding: var(--padding-desktop); /* Inner padding around the grid container */
+    height: 100vh; /* Full viewport height */
+    background-color: var(--background-color); /* Maintain existing background */
+  }
+
+  /* Assign grid areas */
+  header {
+    grid-area: header;
+    font-size: 1.5rem; /* Larger font for header */
+  }
+
+  nav {
+    grid-area: nav;
+    font-size: 1rem;
+  }
+
+  article {
+    grid-area: article;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  aside {
+    grid-area: aside;
+    font-size: 1rem;
+    width: var(--max-nav-aside-width);
+  }
+
+  footer {
+    grid-area: footer;
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 639px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column layout */
+    grid-template-rows: repeat(5, minmax(var(--min-mobile-header-footer-height), auto)); /* header, article, nav, aside, footer */
+    grid-template-areas:
+      "header"
+      "article"
+      "nav"
+      "aside"
+      "footer";
+    gap: var(--gap-mobile); /* Gutter between grid items */
+    padding: var(--padding-mobile); /* Inner padding around the grid container */
+    height: auto; /* Allow height to adjust based on content */
+    background-color: var(--background-color); /* Maintain existing background */
+  }
+
+  /* Assign grid areas */
+  header {
+    grid-area: header;
+    font-size: 1.2rem;
+  }
+
+  article {
+    grid-area: article;
+    font-size: 1rem;
+    min-height: var(--min-mobile-article-height);
+  }
+
+  nav {
+    grid-area: nav;
+    font-size: 1rem;
+  }
+
+  aside {
+    grid-area: aside;
+    font-size: 1rem;
+  }
+
+  footer {
+    grid-area: footer;
+    font-size: 1rem;
+  }
+}
+
+
+body {
+  font-size: 1rem; /* Base font size */
+}
+
+@media (min-width: 640px) {
+  body {
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+
+header:hover, nav:hover, article:hover, aside:hover, footer:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* 10. Smooth Transitions */
+header, nav, article, aside, footer {
+  transition: all 0.3s ease;
+}
+
+
+
+
+/* 13. Accessibility Enhancements */
+header:focus, nav:focus, article:focus, aside:focus, footer:focus {
+  outline: 2px solid #000;
+}
+
+
+  </style>
+</head>
+<!-- NE PAS MODIFIER LE CODE CI-APRES -->
+<body>
+  <header>Header</header>
+  <article>Article</article>
+  <nav>Navigation</nav>
+  <aside>Aside</aside>
+  <footer>Footer</footer>
+</body>
+</html>

@@ -3,6 +3,13 @@ import logging
 from datetime import datetime
 import os
 import subprocess
+from bot import Bot
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Initialize Flask app
 app = Flask(__name__, template_folder="templates", static_folder='static')
@@ -37,6 +44,16 @@ def pw2tail():
 @app.route('/pw3')
 def pw3():
     return render_template('pw3/pw3.html')
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    bot = Bot(api_key=OPENAI_API_KEY)
+
+    user_input  = request.json.get('user_input')
+
+    answer = bot.response(user_input)
+    return answer
+
 
 
 # Route to handle JSON data submission for contact form

@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
+password.txt
+big/
+git_server_setup.txt
 # C extensions
 *.so
 messages.txt

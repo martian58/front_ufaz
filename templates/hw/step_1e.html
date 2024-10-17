@@ -4,6 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Driving Experience Data</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            font-size: 3rem;
+            color: #007BFF;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 1rem;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 8px;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .instructions {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 20px;
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+    </style>
     <script>
         let drive_experiences = [
           {
@@ -73,15 +130,26 @@
           {"weather_id":"5","condition":"Snowy"}
         ];
 
-        console.log("Driving Experiences:", drive_experiences);
-        console.log("Weather Conditions:", weather_conditions);
-        console.log("Traffic Conditions:", traffic_conditions);
-        console.log("Road Types:", road_types);
-        console.log("Driving Modes:", driving_modes);
+        function showData() {
+            console.log("Driving Experiences:", drive_experiences);
+            console.log("Weather Conditions:", weather_conditions);
+            console.log("Traffic Conditions:", traffic_conditions);
+            console.log("Road Types:", road_types);
+            console.log("Driving Modes:", driving_modes);
+            alert('Data logged to the console. Press F12 to view.');
+        }
     </script>
 </head>
 <body>
-    <h1>Driving Experience Data</h1>
-    <p>Check the console for JSON data.</p>
+    <div class="container">
+        <h1>Driving Experience Data</h1>
+        <p> See the console for detailed driving experience data.</p>
+        <a href="javascript:void(0);" class="btn" onclick="showData()">Log Data to Console</a>
+        <div class="instructions">
+            <p>Tip: Press <strong>F12</strong> to open the developer tools and view the console output.</p>
+        </div>
+    </div>
+    <footer>
+    </footer>
 </body>
 </html>

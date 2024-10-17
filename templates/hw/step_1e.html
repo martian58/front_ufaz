@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving Experience Data</title>
+    <script>
+        let drive_experiences = [
+          {
+            "drive_id": "1",
+            "date": "2024-10-15",
+            "departure_time": "08:00",
+            "arrival_time": "09:00",
+            "kilometres_travelled": "50",
+            "traffic_id": "2",
+            "road_type_id": "1",
+            "mode_id": "3",
+            "weather_id": "2"
+          },
+          {
+            "drive_id": "2",
+            "date": "2024-10-16",
+            "departure_time": "10:30",
+            "arrival_time": "12:00",
+            "kilometres_travelled": "80",
+            "traffic_id": "3",
+            "road_type_id": "2",
+            "mode_id": "1",
+            "weather_id": "3"
+          },
+          {
+            "drive_id": "3",
+            "date": "2024-10-16",
+            "departure_time": "15:00",
+            "arrival_time": "16:15",
+            "kilometres_travelled": "70",
+            "traffic_id": "1",
+            "road_type_id": "5",
+            "mode_id": "4",
+            "weather_id": "1"
+          }
+        ];
+
+        let traffic_conditions = [
+          {"traffic_id":"1","condition":"Light"},
+          {"traffic_id":"2","condition":"Moderate"},
+          {"traffic_id":"3","condition":"Heavy"},
+          {"traffic_id":"4","condition":"Jam"},
+          {"traffic_id":"5","condition":"Accident"}
+        ];
+
+        let road_types = [
+          {"road_type_id":"1","type":"Highway"},
+          {"road_type_id":"2","type":"City Road"},
+          {"road_type_id":"3","type":"Country Road"},
+          {"road_type_id":"4","type":"Toll Road"},
+          {"road_type_id":"5","type":"Gravel Road"}
+        ];
+
+        let driving_modes = [
+          {"mode_id":"1","mode":"Eco"},
+          {"mode_id":"2","mode":"Sport"},
+          {"mode_id":"3","mode":"Comfort"},
+          {"mode_id":"4","mode":"Manual"},
+          {"mode_id":"5","mode":"Auto"}
+        ];
+
+        let weather_conditions = [
+          {"weather_id":"1","condition":"Sunny"},
+          {"weather_id":"2","condition":"Cloudy"},
+          {"weather_id":"3","condition":"Rainy"},
+          {"weather_id":"4","condition":"Stormy"},
+          {"weather_id":"5","condition":"Snowy"}
+        ];
+
+        console.log("Driving Experiences:", drive_experiences);
+        console.log("Weather Conditions:", weather_conditions);
+        console.log("Traffic Conditions:", traffic_conditions);
+        console.log("Road Types:", road_types);
+        console.log("Driving Modes:", driving_modes);
+    </script>
+</head>
+<body>
+    <h1>Driving Experience Data</h1>
+    <p>Check the console for JSON data.</p>
+</body>
+</html>

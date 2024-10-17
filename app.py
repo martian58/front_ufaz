@@ -49,6 +49,10 @@ def pw3():
 def pw5():
     return render_template('pw5/pw5.html')
 
+@app.route('/step_1e')
+def step_1e():
+    return render_template('hw/step_1e.html')
+
 @app.route('/submit', methods=['POST'])
 def submit():
     bot = Bot(api_key=OPENAI_API_KEY)

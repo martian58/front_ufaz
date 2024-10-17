@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martian's  Quiz Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #2b2b2b;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background-color: #333;
+        }
+
+        legend {
+            font-weight: bold;
+            padding: 0 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #444;
+            color: #f0f0f0;
+            border: 1px solid #666;
+            border-radius: 4px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #66b2ff;
+            box-shadow: 0 0 5px #66b2ff;
+        }
+
+        input:invalid {
+            border: 2px solid #ff4d4d;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Dark Mode Adjustments */
+        input[type="radio"] + label,
+        input[type="checkbox"] + label {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            background-color: #444;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            form {
+                padding: 15px;
+            }
+
+            fieldset {
+                padding: 15px;
+            }
+
+            .submit-btn {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Quiz Submission Form</h1>
+<p>Please fill in the form below to submit your quiz.</p>
+
+<form action="submit.php" method="post">
+    <!-- Personal Information Fieldset -->
+    <fieldset>
+        <legend>Student Information</legend>
+        
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    </fieldset>
+
+    <!-- Quiz Date -->
+    <fieldset>
+        <legend>Quiz Date</legend>
+        
+        <label for="quizdate">Quiz Date:</label>
+        <input type="date" id="quizdate" name="quizdate" required>
+        <p>(Check if this control works on all browsers.)</p>
+    </fieldset>
+
+    <!-- Single Choice Question (Radio) -->
+    <fieldset>
+        <legend>Single Choice Question</legend>
+        
+        <label>What is the capital of France?</label>
+        <input type="radio" id="paris" name="capital" value="Paris" required>
+        <label for="paris">Paris</label>
+
+        <input type="radio" id="london" name="capital" value="London">
+        <label for="london">London</label>
+
+        <input type="radio" id="berlin" name="capital" value="Berlin">
+        <label for="berlin">Berlin</label>
+    </fieldset>
+
+    <!-- Multiple Choice Question (Checkbox) -->
+    <fieldset>
+        <legend>Multiple Choice Question</legend>
+        
+        <label>Select the programming languages you know:</label>
+        <input type="checkbox" id="html" name="languages[]" value="HTML">
+        <label for="html">HTML</label>
+
+        <input type="checkbox" id="css" name="languages[]" value="CSS">
+        <label for="css">CSS</label>
+
+        <input type="checkbox" id="javascript" name="languages[]" value="JavaScript">
+        <label for="javascript">JavaScript</label>
+    </fieldset>
+
+    <!-- Dropdown Select Box -->
+    <fieldset>
+        <legend>Favorite Programming Language</legend>
+        
+        <label for="favlang">Select your favorite programming language:</label>
+        <select id="favlang" name="favlang" required>
+            <option value="" disabled selected>Select a language</option>
+            <optgroup label="Frontend">
+                <option value="HTML">HTML</option>
+                <option value="CSS">CSS</option>
+                <option value="JavaScript">JavaScript</option>
+            </optgroup>
+            <optgroup label="Backend">
+                <option value="PHP">PHP</option>
+                <option value="Python">Python</option>
+                <option value="Node.js">Node.js</option>
+            </optgroup>
+        </select>
+        
+    </fieldset>
+
+    <!-- Textarea for HTML/CSS code -->
+    <fieldset>
+        <legend>Enter your code</legend>
+        
+        <label for="code">HTML/CSS Code:</label>
+        <textarea id="code" name="code" rows="5" placeholder="Enter your HTML or CSS code here..." required></textarea>
+    </fieldset>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn">Submit</button>
+</form>
+
+<script>
+    console.log('hellllloooo')
+</script>
+</body>
+</html>

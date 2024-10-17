@@ -45,6 +45,10 @@ def pw2tail():
 def pw3():
     return render_template('pw3/pw3.html')
 
+@app.route('/pw5')
+def pw5():
+    return render_template('pw5/pw5.html')
+
 @app.route('/submit', methods=['POST'])
 def submit():
     bot = Bot(api_key=OPENAI_API_KEY)
@@ -136,4 +140,4 @@ def execute_command():
 
 if __name__ == '__main__':
 
-    app.run(debug=True)
+    app.run(debug=True, port=5050)

@@ -49,9 +49,18 @@ def pw3():
 def pw5():
     return render_template('pw5/pw5.html')
 
+# Home Work Project
+
 @app.route('/step_1e')
 def step_1e():
     return render_template('hw/step_1e.html')
+
+@app.route('/step_2a')
+def step_2a():
+    return render_template('hw/step_2a.html')
+
+
+#AI
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -112,6 +121,7 @@ def console_admin(password_slug):
         return render_template('app/console.html')  
     else:
         return render_template('app/index.html')
+    
 
 # Route to handle JSON data submission for terminal commands
 @app.route("/execute-command", methods=["POST"])

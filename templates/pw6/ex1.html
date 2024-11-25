@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center h-screen">
+    <h3 class="text-3xl font-bold mb-8">Check the console for results!</h3>
+    <script>
+        // Helper function to calculate the cube of a number
+        const cube = (n) => Math.pow(n, 3);
+
+        // Helper function to calculate ABC from A, B, C
+        const calculateABC = (A, B, C) => A * 100 + B * 10 + C;
+
+        // Helper function to calculate A^3 + B^3 + C^3
+        const calculateCubicSum = (A, B, C) => cube(A) + cube(B) + cube(C);
+
+        // Create an array with numbers from 1 to 9
+        const digits = Array.from({ length: 9 }, (_, i) => i + 1);
+
+        // Iterate over all possible combinations of A, B, C using forEach
+        digits.forEach((A) => {
+            digits.forEach((B) => {
+                digits.forEach((C) => {
+                    const ABC = calculateABC(A, B, C);
+                    const cubicSum = calculateCubicSum(A, B, C);
+
+                    // Check if the number ABC equals the sum of cubes of A, B, C
+                    if (ABC === cubicSum) {
+                        console.log(`Found a match! A = ${A}, B = ${B}, C = ${C} => ABC = ${ABC}, A^3 + B^3 + C^3 = ${cubicSum}`);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

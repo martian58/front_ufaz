@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center h-screen">
+    <h3 class="text-3xl font-bold mb-8">Credit Card Validator</h3>
+    <h4 class="text-3xl font-bold mb-8">Results are in</h4>
+    <script>
+        function luhnCheck(cardNumber) {
+            const digits = cardNumber.toString().split('').map(Number).reverse();
+            let sum = 0;
+
+            digits.forEach((digit, index) => {
+                if (index % 2 === 1) {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
+                }
+                sum += digit;
+            });
+
+            // Log the result to the console
+            if (sum % 10 === 0) {
+                console.log(`${cardNumber} is Valid`);
+            } else {
+                console.log(`${cardNumber} is Invalid`);
+            }
+        }
+
+        // Test the function with an example credit card number
+        luhnCheck(4532015112830366); 
+    </script>
+</body>
+</html>

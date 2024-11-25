@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Driving Experience Form">
-    <title>DriveFlow</title>
+    <title>DriveFlow - Dynamic Selection</title>
     <style>
         /*  Css for the form*/
         * {
@@ -116,6 +116,59 @@
             margin-top: 20px;
         }
     </style>
+    <script>
+        // JSON Data
+        const weather_conditions = [
+            {"weather_id":"1","condition":"Sunny"},
+            {"weather_id":"2","condition":"Cloudy"},
+            {"weather_id":"3","condition":"Rainy"},
+            {"weather_id":"4","condition":"Snowy"},
+            {"weather_id":"5","condition":"Windy"}
+        ];
+
+        const traffic_conditions = [
+            {"traffic_id":"1","condition":"Light"},
+            {"traffic_id":"2","condition":"Moderate"},
+            {"traffic_id":"3","condition":"Heavy"},
+            {"traffic_id":"4","condition":"Jam"},
+            {"traffic_id":"5","condition":"Accident"}
+        ];
+
+        const road_types = [
+            {"road_type_id":"1","type":"Highway"},
+            {"road_type_id":"2","type":"City Road"},
+            {"road_type_id":"3","type":"Country Road"},
+            {"road_type_id":"4","type":"Toll Road"},
+            {"road_type_id":"5","type":"Gravel Road"}
+        ];
+
+        const driving_modes = [
+            {"mode_id":"1","mode":"Eco"},
+            {"mode_id":"2","mode":"Sport"},
+            {"mode_id":"3","mode":"Comfort"},
+            {"mode_id":"4","mode":"Manual"},
+            {"mode_id":"5","mode":"Auto"}
+        ];
+
+        // Function to populate select elements dynamically
+        function populateSelect(selectId, options, key, value) {
+            const select = document.getElementById(selectId);
+            options.forEach(option => {
+                const optElement = document.createElement("option");
+                optElement.value = option[key];
+                optElement.textContent = option[value];
+                select.appendChild(optElement);
+            });
+        }
+
+        // Populate all selects on page load
+        document.addEventListener("DOMContentLoaded", () => {
+            populateSelect("weather", weather_conditions, "weather_id", "condition");
+            populateSelect("traffic", traffic_conditions, "traffic_id", "condition");
+            populateSelect("road-type", road_types, "road_type_id", "type");
+            populateSelect("mode", driving_modes, "mode_id", "mode");
+        });
+    </script>
 </head>
 <body>
     <header>
@@ -124,7 +177,7 @@
     </header>
 
     <main class="container">
-        <form action="save_drive" method="POST">
+        <form>
             <div>
                 <label for="date">Date of Drive</label>
                 <input type="date" id="date" name="date" required>
@@ -148,53 +201,25 @@
 
             <div class="grid grid-2">
                 <div>
-                <label for="weather">Weather</label>
-                <select name="weather" id="weather" required>
-                    <option value="">-- Choose --</option>
-                    <option value="1">Sunny</option>
-                    <option value="2">Cloudy</option>
-                    <option value="3">Rainy</option>
-                    <option value="4">Snowy</option>
-                    <option value="5">Windy</option>
-                </select>
+                    <label for="weather">Weather</label>
+                    <select name="weather" id="weather" required></select>
                 </div>
 
                 <div>
-                <label for="traffic">Traffic Condition</label>
-                <select name="traffic" id="traffic" required>
-                    <option value="">-- Choose --</option>
-                    <option value="1">Light</option>
-                    <option value="2">Moderate</option>
-                    <option value="3">Heavy</option>
-                    <option value="4">Jam</option>
-                    <option value="5">Accident</option>
-                </select>
+                    <label for="traffic">Traffic Condition</label>
+                    <select name="traffic" id="traffic" required></select>
                 </div>
             </div>
 
             <div class="grid grid-2">
                 <div>
-                <label for="road-type">Road Type</label>
-                <select name="road-type" id="road-type" required>
-                    <option value="">-- Choose --</option>
-                    <option value="1">Highway</option>
-                    <option value="2">City Road</option>
-                    <option value="3">Country Road</option>
-                    <option value="4">Toll Road</option>
-                    <option value="5">Gravel Road</option>
-                </select>
+                    <label for="road-type">Road Type</label>
+                    <select name="road-type" id="road-type" required></select>
                 </div>
-                
+
                 <div>
-                <label for="mode">Driving Mode</label>
-                <select name="mode" id="mode" required>
-                    <option value="">-- Choose --</option>
-                    <option value="1">Eco</option>
-                    <option value="2">Sport</option>
-                    <option value="3">Comfort</option>
-                    <option value="4">Manual</option>
-                    <option value="5">Auto</option>
-                </select>
+                    <label for="mode">Driving Mode</label>
+                    <select name="mode" id="mode" required></select>
                 </div>
             </div>
 
@@ -205,6 +230,5 @@
     <footer>
         <p>&copy; 2024 DriveFlow. All rights reserved.</p>
     </footer>
-
 </body>
 </html>

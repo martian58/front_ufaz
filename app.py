@@ -49,6 +49,23 @@ def pw3():
 def pw5():
     return render_template('pw5/pw5.html')
 
+
+@app.route('/pw6')
+def pw6():
+    
+    return render_template('pw6/home.html')
+
+@app.route('/pw6/ex1')
+def pw6_ex1():
+    return render_template('pw6/ex1.html')
+
+@app.route('/pw6/ex2')
+def pw6_ex2():
+    return render_template('pw6/ex2.html')
+
+@app.route('/pw6/ex3')
+def pw6_ex3():
+    return render_template('pw6/ex3.html')
 # Home Work Project
 
 @app.route('/step_1e')
@@ -59,6 +76,13 @@ def step_1e():
 def step_2a():
     return render_template('hw/step_2a.html')
 
+@app.route('/step_3a')
+def step_3a():
+    return render_template('hw/step_3a.html')
+
+@app.route('/step_3')
+def step_3():
+    return render_template('hw/step_3.html')
 
 #AI
 

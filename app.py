@@ -80,10 +80,13 @@ def step_2a():
 def step_3a():
     return render_template('hw/step_3a.html')
 
-@app.route('/step_3')
-def step_3():
-    return render_template('hw/step_3.html')
+@app.route('/step_3b')
+def step_3b():
+    return render_template('hw/step_3b.html')
 
+@app.route('/step_3c')
+def step_3c():
+    return render_template('hw/step_3c.html')
 #AI
 
 @app.route('/submit', methods=['POST'])

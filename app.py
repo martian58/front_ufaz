@@ -98,7 +98,9 @@ def submit():
     answer = bot.response(user_input)
     return answer
 
-
+@app.route('/cs_average')
+def cs_average():
+    return render_template('app/cs_average.html')
 
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])

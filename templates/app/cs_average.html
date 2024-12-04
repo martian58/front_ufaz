@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFAZ Score Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .input-field {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <div class="container bg-gray-800 p-6 rounded-xl shadow-lg mt-10">
+        <h1 class="text-3xl font-semibold text-center mb-8">UFAZ Average Calculator</h1>
+        <h1 class="text-3xl font-semibold text-center mb-8">Computer Science</h1>
+
+        <form id="scoreForm" class="space-y-6">
+            <div class="input-field">
+                <label for="dsaScore" class="block text-sm font-medium">DSA Score (2.75 kafsent)</label>
+                <input type="number" step="0.01" id="dsaScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="pwScore" class="block text-sm font-medium">PW Score (2.75 kafsent)</label>
+                <input type="number" step="0.01" id="pwScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="mathMidtermScore" class="block text-sm font-medium">Math Midterm Score (2 kafsent)</label>
+                <input type="number" step="0.01" id="mathMidtermScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="mathFinalScore" class="block text-sm font-medium">Math Final Score (3 kafsent)</label>
+                <input type="number" step="0.01" id="mathFinalScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="mathParticipationScore" class="block text-sm font-medium">Math Participation Score (1 kafsent)</label>
+                <input type="number" step="0.01" id="mathParticipationScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="frontendQuizScore" class="block text-sm font-medium">Frontend Quiz Score (0.2 kafsent)</label>
+                <input type="number" step="0.01" id="frontendQuizScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="frontendPWScore" class="block text-sm font-medium">Frontend PW Score (0.8 kafsent)</label>
+                <input type="number" step="0.01" id="frontendPWScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="frontendFinal" class="block text-sm font-medium">Frontend Final (1 kafsent)</label>
+                <input type="number" step="0.01" id="frontendFinal" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="cpscMidterm" class="block text-sm font-medium">CPSC Midterm (0.6 kafsent)</label>
+                <input type="number" step="0.01" id="cpscMidterm" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="cpscFinal" class="block text-sm font-medium">CPSC Final (1.1 kafsent)</label>
+                <input type="number" step="0.01" id="cpscFinal" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="cpscPW" class="block text-sm font-medium">CPSC PW Score (1.1 kafsent)</label>
+                <input type="number" step="0.01" id="cpscPW" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="pmExam" class="block text-sm font-medium">PM Exam (2.4 kafsent)</label>
+                <input type="number" step="0.01" id="pmExam" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="fmExam" class="block text-sm font-medium">FM Exam (1.2 kafsent)</label>
+                <input type="number" step="0.01" id="fmExam" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="tmExam" class="block text-sm font-medium">TM Exam (2.4 kafsent)</label>
+                <input type="number" step="0.01" id="tmExam" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="french1" class="block text-sm font-medium">French 1 (0.75 kafsent)</label>
+                <input type="number" step="0.01" id="french1" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="french2" class="block text-sm font-medium">French 2 (1.125 kafsent)</label>
+                <input type="number" step="0.01" id="french2" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="french3" class="block text-sm font-medium">French 3 (1.125 kafsent)</label>
+                <input type="number" step="0.01" id="french3" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="aomMidterm" class="block text-sm font-medium">AOM Midterm (0.67 kafsent)</label>
+                <input type="number" step="0.01" id="aomMidterm" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="aomLab" class="block text-sm font-medium">AOM Lab (2 kafsent)</label>
+                <input type="number" step="0.01" id="aomLab" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="input-field">
+                <label for="aomFinal" class="block text-sm font-medium">AOM Final (1.23 kafsent)</label>
+                <input type="number" step="0.01" id="aomFinal" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <div class="flex justify-center">
+                <button type="submit" class="mt-4 px-6 py-3 bg-blue-600 text-white rounded-md text-lg hover:bg-blue-700 transition duration-300">Calculate Average</button>
+            </div>
+        </form>
+
+        <div class="mt-6 text-center text-lg font-semibold text-blue-400 hidden" id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById("scoreForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const scores = {
+                dsa: parseFloat(document.getElementById("dsaScore").value),
+                pw: parseFloat(document.getElementById("pwScore").value),
+                mathMidterm: parseFloat(document.getElementById("mathMidtermScore").value),
+                mathFinal: parseFloat(document.getElementById("mathFinalScore").value),
+                mathParticipation: parseFloat(document.getElementById("mathParticipationScore").value),
+                frontendQuiz: parseFloat(document.getElementById("frontendQuizScore").value),
+                frontendPW: parseFloat(document.getElementById("frontendPWScore").value),
+                frontendFinal: parseFloat(document.getElementById("frontendFinal").value),
+                cpscMidterm: parseFloat(document.getElementById("cpscMidterm").value),
+                cpscFinal: parseFloat(document.getElementById("cpscFinal").value),
+                cpscPW: parseFloat(document.getElementById("cpscPW").value),
+                pmExam: parseFloat(document.getElementById("pmExam").value),
+                fmExam: parseFloat(document.getElementById("fmExam").value),
+                tmExam: parseFloat(document.getElementById("tmExam").value),
+                french1: parseFloat(document.getElementById("french1").value),
+                french2: parseFloat(document.getElementById("french2").value),
+                french3: parseFloat(document.getElementById("french3").value),
+                aomMidterm: parseFloat(document.getElementById("aomMidterm").value),
+                aomLab: parseFloat(document.getElementById("aomLab").value),
+                aomFinal: parseFloat(document.getElementById("aomFinal").value)
+            };
+
+            let result = 0;
+
+            result += scores.dsa * 2.75;
+            result += scores.pw * 2.75;
+            result += scores.mathMidterm * 2;
+            result += scores.mathFinal * 3;
+            result += scores.mathParticipation * 1;
+            result += scores.frontendQuiz * 0.275;
+            result += scores.frontendPW * 1.1;
+            result += scores.frontendFinal * 1.375;
+            result += scores.cpscMidterm * 0.55;
+            result += scores.cpscFinal * 1.1;
+            result += scores.cpscPW * 1.1;
+            result += scores.pmExam * 2.4;
+            result += scores.fmExam * 1.2;
+            result += scores.tmExam * 2.4;
+            result += scores.french1 * 3 / 4;
+            result += scores.french2 * 9 / 8;
+            result += scores.french3 * 9 / 8;
+            result += scores.aomMidterm * 2 / 3;
+            result += scores.aomLab * 2;
+            result += scores.aomFinal * 4 / 3;
+
+            const finalAverage = result / 30;
+
+            document.getElementById("result").textContent = `Your Final Average: ${finalAverage.toFixed(2)}`;
+            document.getElementById("result").classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>

@@ -1,191 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UFAZ Score Calculator</title>
+    <title>UFAZ University Grade Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .input-field {
-            margin-bottom: 1rem;
-        }
-    </style>
 </head>
-<body class="bg-gray-900 text-white">
 
-    <div class="container bg-gray-800 p-6 rounded-xl shadow-lg mt-10">
-        <h1 class="text-3xl font-semibold text-center mb-8">UFAZ Average Calculator</h1>
-        <h1 class="text-3xl font-semibold text-center mb-8">Computer Science</h1>
-
+<body class="bg-gray-900 text-white font-sans">
+    <div class="max-w-lg mx-auto p-8 mt-12 bg-gray-800 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-semibold text-center mb-6">UFAZ University Grade Calculator</h1>
+        <h1 class="text-3xl font-semibold text-center mb-6">Computer Science</h1>
         <form id="scoreForm" class="space-y-6">
-            <div class="input-field">
-                <label for="dsaScore" class="block text-sm font-medium">DSA Score (2.75 kafsent)</label>
-                <input type="number" step="0.01" id="dsaScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <!-- Math Section -->
+            <div>
+                <h2 class="text-xl font-semibold">Math</h2>
+                <label for="noteBookScore" class="block text-sm">Note Book Score (1 coef)</label>
+                <input type="number" step="0.01" id="noteBookScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="firstWrittenExamScore" class="block text-sm">First Written Exam Score (2 coef)</label>
+                <input type="number" step="0.01" id="firstWrittenExamScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="secondWrittenExamScore" class="block text-sm">Second Written Exam Score (3 coef)</label>
+                <input type="number" step="0.01" id="secondWrittenExamScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
 
-            <div class="input-field">
-                <label for="pwScore" class="block text-sm font-medium">PW Score (2.75 kafsent)</label>
-                <input type="number" step="0.01" id="pwScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <!-- Language Section -->
+            <div>
+                <h2 class="text-xl font-semibold">Language</h2>
+                <label for="lang1Score" class="block text-sm">Language 1 Score (2 coef)</label>
+                <input type="number" step="0.01" id="lang1Score" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="lang2Score" class="block text-sm">Language 2 Score (3 coef)</label>
+                <input type="number" step="0.01" id="lang2Score" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="lang3Score" class="block text-sm">Language 3 Score (3 coef)</label>
+                <input type="number" step="0.01" id="lang3Score" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
 
-            <div class="input-field">
-                <label for="mathMidtermScore" class="block text-sm font-medium">Math Midterm Score (2 kafsent)</label>
-                <input type="number" step="0.01" id="mathMidtermScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <!-- Physics Section -->
+            <div>
+                <h2 class="text-xl font-semibold">Physics</h2>
+                <label for="fluidScore" class="block text-sm">Fluid Score (1 coef)</label>
+                <input type="number" step="0.01" id="fluidScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="pmScore" class="block text-sm">PM Score (2 coef)</label>
+                <input type="number" step="0.01" id="pmScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="termoScore" class="block text-sm">Termo Score (2 coef)</label>
+                <input type="number" step="0.01" id="termoScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
 
-            <div class="input-field">
-                <label for="mathFinalScore" class="block text-sm font-medium">Math Final Score (3 kafsent)</label>
-                <input type="number" step="0.01" id="mathFinalScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <!-- Chemistry Section -->
+            <div>
+                <h2 class="text-xl font-semibold">Chemistry</h2>
+                <label for="aomFirstWrittenScore" class="block text-sm">AOM First Written Exam Score (1 coef)</label>
+                <input type="number" step="0.01" id="aomFirstWrittenScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="aomSecondWrittenScore" class="block text-sm">AOM Second Written Exam Score (2 coef)</label>
+                <input type="number" step="0.01" id="aomSecondWrittenScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="labScore" class="block text-sm">Lab Score (2 coef)</label>
+                <input type="number" step="0.01" id="labScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
 
-            <div class="input-field">
-                <label for="mathParticipationScore" class="block text-sm font-medium">Math Participation Score (1 kafsent)</label>
-                <input type="number" step="0.01" id="mathParticipationScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            <!-- Computer Science Section -->
+            <div>
+                <h2 class="text-xl font-semibold">Computer Science</h2>
+                <label for="frontPwScore" class="block text-sm">Front PW Score (0.1 coef)</label>
+                <input type="number" step="0.01" id="frontPwScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="frontProjectScore" class="block text-sm">Front Project Score (0.4 coef)</label>
+                <input type="number" step="0.01" id="frontProjectScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="frontExamScore" class="block text-sm">Front Exam Score (0.5 coef)</label>
+                <input type="number" step="0.01" id="frontExamScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="dsaPwProjectScore" class="block text-sm">DSA PW Project Score (1 coef)</label>
+                <input type="number" step="0.01" id="dsaPwProjectScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="dsaExamScore" class="block text-sm">DSA Exam Score (1 coef)</label>
+                <input type="number" step="0.01" id="dsaExamScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="cspcPwScore" class="block text-sm">CSPC PW Score (0.4 coef)</label>
+                <input type="number" step="0.01" id="cspcPwScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="cspcFirstExamScore" class="block text-sm">CSPC First Exam Score (0.2 coef)</label>
+                <input type="number" step="0.01" id="cspcFirstExamScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+
+                <label for="cspcSecondExamScore" class="block text-sm">CSPC Second Exam Score (0.4 coef)</label>
+                <input type="number" step="0.01" id="cspcSecondExamScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
             </div>
 
-            <div class="input-field">
-                <label for="frontendQuizScore" class="block text-sm font-medium">Frontend Quiz Score (0.2 kafsent)</label>
-                <input type="number" step="0.01" id="frontendQuizScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="frontendPWScore" class="block text-sm font-medium">Frontend PW Score (0.8 kafsent)</label>
-                <input type="number" step="0.01" id="frontendPWScore" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="frontendFinal" class="block text-sm font-medium">Frontend Final (1 kafsent)</label>
-                <input type="number" step="0.01" id="frontendFinal" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="cpscMidterm" class="block text-sm font-medium">CPSC Midterm (0.6 kafsent)</label>
-                <input type="number" step="0.01" id="cpscMidterm" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="cpscFinal" class="block text-sm font-medium">CPSC Final (1.1 kafsent)</label>
-                <input type="number" step="0.01" id="cpscFinal" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="cpscPW" class="block text-sm font-medium">CPSC PW Score (1.1 kafsent)</label>
-                <input type="number" step="0.01" id="cpscPW" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="pmExam" class="block text-sm font-medium">PM Exam (2.4 kafsent)</label>
-                <input type="number" step="0.01" id="pmExam" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="fmExam" class="block text-sm font-medium">FM Exam (1.2 kafsent)</label>
-                <input type="number" step="0.01" id="fmExam" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="tmExam" class="block text-sm font-medium">TM Exam (2.4 kafsent)</label>
-                <input type="number" step="0.01" id="tmExam" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="french1" class="block text-sm font-medium">French 1 (0.75 kafsent)</label>
-                <input type="number" step="0.01" id="french1" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="french2" class="block text-sm font-medium">French 2 (1.125 kafsent)</label>
-                <input type="number" step="0.01" id="french2" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="french3" class="block text-sm font-medium">French 3 (1.125 kafsent)</label>
-                <input type="number" step="0.01" id="french3" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="aomMidterm" class="block text-sm font-medium">AOM Midterm (0.67 kafsent)</label>
-                <input type="number" step="0.01" id="aomMidterm" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="aomLab" class="block text-sm font-medium">AOM Lab (2 kafsent)</label>
-                <input type="number" step="0.01" id="aomLab" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="input-field">
-                <label for="aomFinal" class="block text-sm font-medium">AOM Final (1.23 kafsent)</label>
-                <input type="number" step="0.01" id="aomFinal" class="w-full p-3 bg-gray-700 text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
-            <div class="flex justify-center">
-                <button type="submit" class="mt-4 px-6 py-3 bg-blue-600 text-white rounded-md text-lg hover:bg-blue-700 transition duration-300">Calculate Average</button>
-            </div>
+            <button type="submit" class="w-full p-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-500">Calculate Average</button>
         </form>
 
-        <div class="mt-6 text-center text-lg font-semibold text-blue-400 hidden" id="result"></div>
+        <div id="result" class="mt-6 text-center text-xl"></div>
     </div>
 
     <script>
-        document.getElementById("scoreForm").addEventListener("submit", function(event) {
+        document.getElementById('scoreForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
-            const scores = {
-                dsa: parseFloat(document.getElementById("dsaScore").value),
-                pw: parseFloat(document.getElementById("pwScore").value),
-                mathMidterm: parseFloat(document.getElementById("mathMidtermScore").value),
-                mathFinal: parseFloat(document.getElementById("mathFinalScore").value),
-                mathParticipation: parseFloat(document.getElementById("mathParticipationScore").value),
-                frontendQuiz: parseFloat(document.getElementById("frontendQuizScore").value),
-                frontendPW: parseFloat(document.getElementById("frontendPWScore").value),
-                frontendFinal: parseFloat(document.getElementById("frontendFinal").value),
-                cpscMidterm: parseFloat(document.getElementById("cpscMidterm").value),
-                cpscFinal: parseFloat(document.getElementById("cpscFinal").value),
-                cpscPW: parseFloat(document.getElementById("cpscPW").value),
-                pmExam: parseFloat(document.getElementById("pmExam").value),
-                fmExam: parseFloat(document.getElementById("fmExam").value),
-                tmExam: parseFloat(document.getElementById("tmExam").value),
-                french1: parseFloat(document.getElementById("french1").value),
-                french2: parseFloat(document.getElementById("french2").value),
-                french3: parseFloat(document.getElementById("french3").value),
-                aomMidterm: parseFloat(document.getElementById("aomMidterm").value),
-                aomLab: parseFloat(document.getElementById("aomLab").value),
-                aomFinal: parseFloat(document.getElementById("aomFinal").value)
-            };
+            // Get the input values
+            const noteBookScore = parseFloat(document.getElementById('noteBookScore').value);
+            const firstWrittenExamScore = parseFloat(document.getElementById('firstWrittenExamScore').value);
+            const secondWrittenExamScore = parseFloat(document.getElementById('secondWrittenExamScore').value);
 
-            let result = 0;
+            const lang1Score = parseFloat(document.getElementById('lang1Score').value);
+            const lang2Score = parseFloat(document.getElementById('lang2Score').value);
+            const lang3Score = parseFloat(document.getElementById('lang3Score').value);
 
-            result += scores.dsa * 2.75;
-            result += scores.pw * 2.75;
-            result += scores.mathMidterm * 2;
-            result += scores.mathFinal * 3;
-            result += scores.mathParticipation * 1;
-            result += scores.frontendQuiz * 0.275;
-            result += scores.frontendPW * 1.1;
-            result += scores.frontendFinal * 1.375;
-            result += scores.cpscMidterm * 0.55;
-            result += scores.cpscFinal * 1.1;
-            result += scores.cpscPW * 1.1;
-            result += scores.pmExam * 2.4;
-            result += scores.fmExam * 1.2;
-            result += scores.tmExam * 2.4;
-            result += scores.french1 * 3 / 4;
-            result += scores.french2 * 9 / 8;
-            result += scores.french3 * 9 / 8;
-            result += scores.aomMidterm * 2 / 3;
-            result += scores.aomLab * 2;
-            result += scores.aomFinal * 4 / 3;
+            const fluidScore = parseFloat(document.getElementById('fluidScore').value);
+            const pmScore = parseFloat(document.getElementById('pmScore').value);
+            const termoScore = parseFloat(document.getElementById('termoScore').value);
 
-            const finalAverage = result / 30;
+            const aomFirstWrittenScore = parseFloat(document.getElementById('aomFirstWrittenScore').value);
+            const aomSecondWrittenScore = parseFloat(document.getElementById('aomSecondWrittenScore').value);
+            const labScore = parseFloat(document.getElementById('labScore').value);
 
-            document.getElementById("result").textContent = `Your Final Average: ${finalAverage.toFixed(2)}`;
-            document.getElementById("result").classList.remove("hidden");
+            const frontPwScore = parseFloat(document.getElementById('frontPwScore').value);
+            const frontProjectScore = parseFloat(document.getElementById('frontProjectScore').value);
+            const frontExamScore = parseFloat(document.getElementById('frontExamScore').value);
+
+            const dsaPwProjectScore = parseFloat(document.getElementById('dsaPwProjectScore').value);
+            const dsaExamScore = parseFloat(document.getElementById('dsaExamScore').value);
+
+            const cspcPwScore = parseFloat(document.getElementById('cspcPwScore').value);
+            const cspcFirstExamScore = parseFloat(document.getElementById('cspcFirstExamScore').value);
+            const cspcSecondExamScore = parseFloat(document.getElementById('cspcSecondExamScore').value);
+
+            // Define the coefficients
+            const noteBookCoef = 1;
+            const firstWrittenExamCoef = 2;
+            const secondWrittenExamCoef = 3;
+
+            const lang1Coef = (3 / 8) * 2;
+            const lang2Coef = (3 / 8) * 3;
+            const lang3Coef = (3 / 8) * 3;
+
+            const fluidCoef = (6 / 5) * 1;
+            const pmCoef = (6 / 5) * 2;
+            const termoCoef = (6 / 5) * 2;
+
+            const aomFirstWrittenCoef = (2 / 3) * 1;
+            const aomSecondWrittenCoef = (2 / 3) * 2;
+            const labCoef = 2;
+
+            const frontPwCoef = (11 / 4) * 0.1;
+            const frontProjectCoef = (11 / 4) * 0.4;
+            const frontExamCoef = (11 / 4) * 0.5;
+
+            const dsaPwProjectCoef = (11 / 4) * 2 * 0.5;
+            const dsaExamCoef = (11 / 4) * 2 * 0.5;
+
+            const cspcPwCoef = (11 / 4) * 0.4;
+            const cspcFirstExamCoef = (11 / 4) * 0.2;
+            const cspcSecondExamCoef = (11 / 4) * 0.4;
+
+            // Calculate the weighted sum
+            const weightedSum =
+                (noteBookScore * noteBookCoef) +
+                (firstWrittenExamScore * firstWrittenExamCoef) +
+                (secondWrittenExamScore * secondWrittenExamCoef) +
+                (lang1Score * lang1Coef) +
+                (lang2Score * lang2Coef) +
+                (lang3Score * lang3Coef) +
+                (fluidScore * fluidCoef) +
+                (pmScore * pmCoef) +
+                (termoScore * termoCoef) +
+                (aomFirstWrittenScore * aomFirstWrittenCoef) +
+                (aomSecondWrittenScore * aomSecondWrittenCoef) +
+                (labScore * labCoef) +
+                (frontPwScore * frontPwCoef) +
+                (frontProjectScore * frontProjectCoef) +
+                (frontExamScore * frontExamCoef) +
+                (dsaPwProjectScore * dsaPwProjectCoef) +
+                (dsaExamScore * dsaExamCoef) +
+                (cspcPwScore * cspcPwCoef) +
+                (cspcFirstExamScore * cspcFirstExamCoef) +
+                (cspcSecondExamScore * cspcSecondExamCoef);
+
+            // Calculate the total coefficients
+            const totalCoefficients =
+                noteBookCoef + firstWrittenExamCoef + secondWrittenExamCoef +
+                lang1Coef + lang2Coef + lang3Coef +
+                fluidCoef + pmCoef + termoCoef +
+                aomFirstWrittenCoef + aomSecondWrittenCoef + labCoef +
+                frontPwCoef + frontProjectCoef + frontExamCoef +
+                dsaPwProjectCoef + dsaExamCoef +
+                cspcPwCoef + cspcFirstExamCoef + cspcSecondExamCoef;
+
+            // Calculate the weighted average
+            const weightedAverage = weightedSum / totalCoefficients;
+
+            // Display the result
+            document.getElementById('result').textContent = `Your Average is: ${weightedAverage.toFixed(2)}`;
         });
     </script>
 </body>
+
 </html>

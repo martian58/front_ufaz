@@ -102,6 +102,10 @@ def submit():
 def cs_average():
     return render_template('app/cs_average.html')
 
+@app.route('/ce_average')
+def ce_average():
+    return render_template('app/ce_average.html')
+
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])
 def save_message():

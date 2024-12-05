@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFAZ L1 Average Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-800 text-white font-sans">
+
+    <div class="max-w-4xl mx-auto mt-10 p-8 bg-gray-900 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-semibold mb-6 text-center text-blue-500">L1 CE Average Calculator</h1>
+
+        <form id="scoreForm" class="space-y-4">
+            <!-- Math Inputs -->
+            <div class="space-y-2">
+                <label for="noteBookScore" class="block text-lg font-medium">Math Notebook Score:</label>
+                <input type="number" step="0.01" id="noteBookScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="firstWrittenExamScore" class="block text-lg font-medium">Math First Exam Score:</label>
+                <input type="number" step="0.01" id="firstWrittenExamScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="secondWrittenExamScore" class="block text-lg font-medium">Math Second Exam Score:</label>
+                <input type="number" step="0.01" id="secondWrittenExamScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <!-- Language Inputs -->
+            <div class="space-y-2">
+                <label for="lang1Score" class="block text-lg font-medium">Language 1 Score:</label>
+                <input type="number" step="0.01" id="lang1Score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="lang2Score" class="block text-lg font-medium">Language 2 Score:</label>
+                <input type="number" step="0.01" id="lang2Score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="lang3Score" class="block text-lg font-medium">Language 3 Score:</label>
+                <input type="number" step="0.01" id="lang3Score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <!-- Physics Inputs -->
+            <div class="space-y-2">
+                <label for="fluidScore" class="block text-lg font-medium">Fluid Physics Score:</label>
+                <input type="number" step="0.01" id="fluidScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="pmScore" class="block text-lg font-medium">PM Physics Score:</label>
+                <input type="number" step="0.01" id="pmScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="termoScore" class="block text-lg font-medium">Termo Physics Score:</label>
+                <input type="number" step="0.01" id="termoScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="electroScore" class="block text-lg font-medium">Electro Physics Score:</label>
+                <input type="number" step="0.01" id="electroScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <!-- Chemistry Inputs -->
+            <div class="space-y-2">
+                <label for="aomFirstWrittenScore" class="block text-lg font-medium">AOM First Written Score:</label>
+                <input type="number" step="0.01" id="aomFirstWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="aomSecondWrittenScore" class="block text-lg font-medium">AOM Second Written Score:</label>
+                <input type="number" step="0.01" id="aomSecondWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="tomFirstWrittenScore" class="block text-lg font-medium">TOM First Written Score:</label>
+                <input type="number" step="0.01" id="tomFirstWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="tomSecondWrittenScore" class="block text-lg font-medium">TOM Second Written Score:</label>
+                <input type="number" step="0.01" id="tomSecondWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="labScore" class="block text-lg font-medium">Lab Score:</label>
+                <input type="number" step="0.01" id="labScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <!-- Chemical Engineering Inputs -->
+            <div class="space-y-2">
+                <label for="introToCEScore" class="block text-lg font-medium">Intro to CE Score:</label>
+                <input type="number" step="0.01" id="introToCEScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="CELabScore" class="block text-lg font-medium">CE Lab Score:</label>
+                <input type="number" step="0.01" id="CELabScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <!-- Computer Science Inputs -->
+            <div class="space-y-2">
+                <label for="cspcPwScore" class="block text-lg font-medium">CSPC PW Score:</label>
+                <input type="number" step="0.01" id="cspcPwScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="cspcFirstExamScore" class="block text-lg font-medium">CSPC First Exam Score:</label>
+                <input type="number" step="0.01" id="cspcFirstExamScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <div class="space-y-2">
+                <label for="cspcSecondExamScore" class="block text-lg font-medium">CSPC Second Exam Score:</label>
+                <input type="number" step="0.01" id="cspcSecondExamScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+            </div>
+
+            <button type="submit" class="mt-6 w-full py-3 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg">Calculate Weighted Average</button>
+        </form>
+
+        <div id="result" class="mt-6 text-xl text-center"></div>
+
+        <canvas id="performanceChart" class="mt-8 max-w-full"></canvas>
+    </div>
+
+
+    <script>
+        document.getElementById('scoreForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get the input values
+            const scores = {
+                'Math Notebook': parseFloat(document.getElementById('noteBookScore').value),
+                'Math First Exam': parseFloat(document.getElementById('firstWrittenExamScore').value),
+                'Math Second Exam': parseFloat(document.getElementById('secondWrittenExamScore').value),
+                'Language 1': parseFloat(document.getElementById('lang1Score').value),
+                'Language 2': parseFloat(document.getElementById('lang2Score').value),
+                'Language 3': parseFloat(document.getElementById('lang3Score').value),
+                'Fluid Physics': parseFloat(document.getElementById('fluidScore').value),
+                'PM Physics': parseFloat(document.getElementById('pmScore').value),
+                'Termo Physics': parseFloat(document.getElementById('termoScore').value),
+                'Electro Physics': parseFloat(document.getElementById('electroScore').value),
+                'AOM First Written': parseFloat(document.getElementById('aomFirstWrittenScore').value),
+                'AOM Second Written': parseFloat(document.getElementById('aomSecondWrittenScore').value),
+                'TOM First Written': parseFloat(document.getElementById('tomSecondWrittenScore').value),
+                'TOM Second Written': parseFloat(document.getElementById('tomSecondWrittenScore').value),
+                'Lab': parseFloat(document.getElementById('labScore').value),
+                'Intro to CE': parseFloat(document.getElementById('introToCEScore').value),
+                'CE Lab': parseFloat(document.getElementById('CELabScore').value),
+                'CSPC PW': parseFloat(document.getElementById('cspcPwScore').value),
+                'CSPC First Exam': parseFloat(document.getElementById('cspcFirstExamScore').value),
+                'CSPC Second Exam': parseFloat(document.getElementById('cspcSecondExamScore').value)
+            };
+
+            console.log(scores);
+
+
+            // Weighted average calculation
+            const weightedSum = 
+                (scores['Math Notebook'] * (6 / 6) * 1) + 
+                (scores['Math First Exam'] * (6 / 6) * 2) + 
+                (scores['Math Second Exam'] * (6 / 6) * 3) + 
+                (scores['Language 1'] * (3 / 8) * 2) + 
+                (scores['Language 2'] * (3 / 8) * 3) + 
+                (scores['Language 3'] * (3 / 8) * 3) + 
+                (scores['Fluid Physics'] * (8 / 7) * 1) + 
+                (scores['PM Physics'] * (8 / 7) * 2) + 
+                (scores['Termo Physics'] * (8 / 7) * 2) + 
+                (scores['Electro Physics'] * (8 / 7) * 2) + 
+                (scores['AOM First Written'] * (2 / 3) * 1) + 
+                (scores['AOM Second Written'] * (2 / 3) * 2) + 
+                (scores['TOM First Written'] * (2 / 3) * 1) + 
+                (scores['TOM Second Written'] * (2 / 3) * 2) + 
+                (scores['Lab'] * 2) + 
+                (scores['CSPC PW'] * (3) * 0.4) + 
+                (scores['CSPC First Exam'] * (3) * 0.2) + 
+                (scores['CSPC Second Exam'] * (3) * 0.4) +
+                (scores['Intro to CE'] * (4/2) * 1) +
+                (scores['CE Lab'] * (4/2) * 1);
+        
+            console.log(weightedSum);
+            
+            const totalCoefficients = 30;
+            const weightedAverage = weightedSum / totalCoefficients;
+
+            // Display the weighted average
+            document.getElementById('result').textContent = `Your Weighted Average is: ${weightedAverage.toFixed(2)}`;
+
+            // Classify scores
+            displayClassifications(scores);
+
+            // Create chart to display subject performance
+            createChart(scores);
+        });
+
+        function classifyScore(score) {
+            if (score >= 13.5) return 'Perfect';
+            if (score >= 11.5) return 'Good';
+            if (score >= 10) return 'Enough';
+            return 'Fail';
+        }
+
+        function displayClassifications(scores) {
+            let classifications = '';
+            for (const [subject, score] of Object.entries(scores)) {
+                classifications += `<br>${subject}: ${score} - ${classifyScore(score)}<br>`;
+            }
+            document.getElementById('result').innerHTML += classifications;
+        }
+
+        function createChart(scores) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            const labels = Object.keys(scores);
+            const data = Object.values(scores);
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Subject Scores',
+                        data: data,
+                        backgroundColor: data.map(score => score >= 13.5 ? 'green' : (score >= 11.5 ? 'yellow' : 'red')),
+                        borderColor: 'white',
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: { beginAtZero: true },
+                        y: { beginAtZero: true, max: 20 },
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

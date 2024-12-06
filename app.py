@@ -106,6 +106,18 @@ def cs_average():
 def ce_average():
     return render_template('app/ce_average.html')
 
+@app.route('/ge_average')
+def ge_average():
+    return render_template('app/ge_average.html')
+
+@app.route('/pe_average')
+def pe_average():
+    return render_template('app/pe_average.html')
+
+@app.route('/average')
+def index_average():
+    return render_template('app/average_index.html')
+
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])
 def save_message():

@@ -6,7 +6,6 @@
     <meta name="description" content="Driving Experience Form">
     <title>DriveFlow - Summary</title>
     <style>
-        /* CSS for the page */
         * {
             margin: 0;
             padding: 0;
@@ -40,6 +39,16 @@
         header h1 {
             font-size: 2.5rem;
             color: #bd93f9;
+        }
+
+        .summary {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .summary p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
         table {
@@ -77,6 +86,11 @@
             color: #bd93f9;
         }
 
+        .chart-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
         footer {
             background-color: #282a36;
             text-align: center;
@@ -86,6 +100,7 @@
         }
 
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Data arrays
         const weather_conditions = [
@@ -120,102 +135,100 @@
             {"mode_id":"5","mode":"Auto"}
         ];
 
-        // Function to get the condition text based on ID
         function getConditionById(type, id) {
-            let condition = "";
-            let array = [];
+            let array;
             switch (type) {
-                case "weather":
-                    array = weather_conditions;
-                    break;
-                case "traffic":
-                    array = traffic_conditions;
-                    break;
-                case "road-type":
-                    array = road_types;
-                    break;
-                case "mode":
-                    array = driving_modes;
-                    break;
-                default:
-                    return "Unknown";
+                case "weather": array = weather_conditions; break;
+                case "traffic": array = traffic_conditions; break;
+                case "road_type": array = road_types; break;
+                case "mode": array = driving_modes; break;
+                default: return "Unknown";
             }
             const found = array.find(item => item[`${type}_id`] === id);
-            if (found) {
-                condition = found[`${type}_id`] === id ? found.condition || found.type || found.mode : "Unknown";
-            }
-            return condition;
+            return found ? found.condition || found.type || found.mode : "Unknown";
         }
 
-        // Display the summary of all experiences and statistics
         function displaySummary() {
             const experiences = JSON.parse(localStorage.getItem("drive_experiences")) || [];
             const tableBody = document.getElementById("experience-table-body");
-            let totalDistance = 0;
+            const totalDistance = experiences.reduce((sum, exp) => sum + exp.kilometres_travelled, 0);
+            const totalExperiences = experiences.length;
 
-            // Initialize stats counters
+            // Display total distance and experiences
+            document.getElementById("total-distance").textContent = `Total Distance: ${totalDistance} km`;
+            document.getElementById("total-experiences").textContent = `Total Experiences: ${totalExperiences}`;
+
+            // Stats data
             const weatherStats = { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 };
             const trafficStats = { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 };
             const roadTypeStats = { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 };
             const modeStats = { "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 };
 
             experiences.forEach(exp => {
-                totalDistance += exp.kilometres_travelled;
-
-                // Create table row
                 const row = document.createElement("tr");
                 row.innerHTML = `
                     <td>${exp.date}</td>
                     <td>${exp.kilometres_travelled}</td>
                     <td>${getConditionById("weather", exp.weather_id)}</td>
                     <td>${getConditionById("traffic", exp.traffic_id)}</td>
-                    <td>${getConditionById("road-type", exp.road_type_id)}</td>
+                    <td>${getConditionById("road_type", exp.road_type_id)}</td>
                     <td>${getConditionById("mode", exp.mode_id)}</td>
                 `;
                 tableBody.appendChild(row);
 
-                // Update statistics
+                // Update stats
                 weatherStats[exp.weather_id] = (weatherStats[exp.weather_id] || 0) + 1;
                 trafficStats[exp.traffic_id] = (trafficStats[exp.traffic_id] || 0) + 1;
                 roadTypeStats[exp.road_type_id] = (roadTypeStats[exp.road_type_id] || 0) + 1;
                 modeStats[exp.mode_id] = (modeStats[exp.mode_id] || 0) + 1;
             });
 
-            // Display total distance
-            document.getElementById("total-distance").textContent = `Total Distance: ${totalDistance} km`;
-
-            // Update the statistics in the summary
-            updateStats("weather-stats", weatherStats, weather_conditions, "condition");
-            updateStats("traffic-stats", trafficStats, traffic_conditions, "condition");
-            updateStats("road-type-stats", roadTypeStats, road_types, "type");
-            updateStats("mode-stats", modeStats, driving_modes, "mode");
+            // Generate chart
+            generateChart("weather-chart", "Weather Conditions", Object.values(weatherStats), weather_conditions.map(w => w.condition));
+            generateChart("traffic-chart", "Traffic Conditions", Object.values(trafficStats), traffic_conditions.map(t => t.condition));
+            generateChart("road-type-chart", "Road Types", Object.values(roadTypeStats), road_types.map(r => r.type));
+            generateChart("mode-chart", "Driving Modes", Object.values(modeStats), driving_modes.map(m => m.mode));
         }
 
-        // Update the statistical display
-        function updateStats(statId, stats, dataArray, labelKey) {
-            const statContainer = document.getElementById(statId);
-            let html = '';
-            dataArray.forEach(item => {
-                const count = stats[item[`${labelKey}_id`]] || 0;
-                html += `<p>${item[labelKey]}: ${count} experience(s)</p>`;
+        function generateChart(canvasId, label, data, labels) {
+            const ctx = document.getElementById(canvasId).getContext("2d");
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: label,
+                        data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
             });
-            statContainer.innerHTML = html;
         }
 
-        // Load summary page on DOM content loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            displaySummary();
-        });
+        document.addEventListener("DOMContentLoaded", displaySummary);
     </script>
 </head>
 <body>
     <header>
         <h1>DriveFlow - Summary</h1>
-        <h3>Your Driving Experience Summary</h3>
+        <div class="summary">
+            <p id="total-experiences"></p>
+            <p id="total-distance"></p>
+        </div>
     </header>
 
     <main class="container">
-        <!-- Table to display the driving experiences -->
         <table>
             <thead>
                 <tr>
@@ -230,15 +243,11 @@
             <tbody id="experience-table-body"></tbody>
         </table>
 
-        <!-- Statistics section -->
-        <div class="stats-section">
-            <h3>Statistics</h3>
-            <p id="total-distance"></p>
-
-            <div id="weather-stats"></div>
-            <div id="traffic-stats"></div>
-            <div id="road-type-stats"></div>
-            <div id="mode-stats"></div>
+        <div class="chart-container">
+            <canvas id="weather-chart"></canvas>
+            <canvas id="traffic-chart"></canvas>
+            <canvas id="road-type-chart"></canvas>
+            <canvas id="mode-chart"></canvas>
         </div>
     </main>
 

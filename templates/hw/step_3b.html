@@ -6,7 +6,6 @@
     <meta name="description" content="Driving Experience Form">
     <title>DriveFlow - Dynamic</title>
     <style>
-        /*  Css for the form*/
         * {
             margin: 0;
             padding: 0;
@@ -114,6 +113,18 @@
             padding: 16px;
             color: #f8f8f2;
             margin-top: 20px;
+        }
+        .summary-link {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #bd93f9; 
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+    
+        .summary-link:hover {
+            color: #6272a4; 
+            text-decoration: underline; 
         }
     </style>
     <script>
@@ -277,6 +288,7 @@
             <button type="submit">Submit</button>
         </form>
         <p id="total-distance"></p>
+        <a href="step_3c" class="summary-link">View Summary</a>
     </main>
 
     <footer>

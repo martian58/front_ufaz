@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, Response, send_from_directory
 import logging
 from datetime import datetime
 import os
@@ -87,6 +87,23 @@ def step_3b():
 @app.route('/step_3c')
 def step_3c():
     return render_template('hw/step_3c.html')
+
+
+
+@app.route('/sw.js')
+def serve_sw():
+    try:
+        # Define the path to the service worker file
+        file_path = os.path.join(app.root_path, 'sw.js')
+
+        # Check if the file exists
+        if not os.path.exists(file_path):
+            return Response("Service worker not found.", status=404)
+
+        # Serve the file with the correct MIME type
+        return send_from_directory(app.root_path, 'sw.js', mimetype='application/javascript')
+    except Exception as e:
+        return Response(f"An error occurred: {str(e)}", status=500)
 #AI
 
 @app.route('/submit', methods=['POST'])

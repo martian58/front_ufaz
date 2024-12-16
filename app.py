@@ -135,6 +135,10 @@ def pe_average():
 def index_average():
     return render_template('app/average_index.html')
 
+
+@app.route('/grade_me')
+def grade_me():
+    return render_template('app/grade_me.html')
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])
 def save_message():

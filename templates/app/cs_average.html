@@ -142,8 +142,7 @@
 
     <script>
         document.getElementById('scoreForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-
+            event.preventDefault();  
             // Get the input values
             const scores = {
                 'Math Notebook': parseFloat(document.getElementById('noteBookScore').value),
@@ -167,50 +166,125 @@
                 'CSPC First Exam': parseFloat(document.getElementById('cspcFirstExamScore').value),
                 'CSPC Second Exam': parseFloat(document.getElementById('cspcSecondExamScore').value)
             };
-
+        
+            // Store the scores in localStorage
+            localStorage.setItem('cs_scores', JSON.stringify(scores));
+        
             // Weighted average calculation
-            const weightedSum = 
-                (scores['Math Notebook'] * (6 / 6) * 1) + 
-                (scores['Math First Exam'] * (6 / 6) * 2) + 
-                (scores['Math Second Exam'] * (6 / 6) * 3) + 
-                (scores['Language 1'] * (3 / 8) * 2) + 
-                (scores['Language 2'] * (3 / 8) * 3) + 
-                (scores['Language 3'] * (3 / 8) * 3) + 
-                (scores['Fluid Physics'] * (6 / 5) * 1) + 
-                (scores['PM Physics'] * (6 / 5) * 2) + 
-                (scores['Termo Physics'] * (6 / 5) * 2) + 
-                (scores['AOM First Written'] * (2 / 3) * 1) + 
-                (scores['AOM Second Written'] * (2 / 3) * 2) + 
-                (scores['Lab'] * 2) + 
-                (scores['Frontend PW'] * (11 / 4) * 0.1) + 
-                (scores['Frontend Project'] * (11 / 4) * 0.4) + 
-                (scores['Frontend Exam'] * (11 / 4) * 0.5) + 
-                (scores['DSA PW Project'] * (11 / 4) * 1) + 
-                (scores['DSA Exam'] * (11 / 4) * 1) + 
-                (scores['CSPC PW'] * (11 / 4) * 0.4) + 
-                (scores['CSPC First Exam'] * (11 / 4) * 0.2) + 
+            const weightedSum =
+                (scores['Math Notebook'] * (6 / 6) * 1) +
+                (scores['Math First Exam'] * (6 / 6) * 2) +
+                (scores['Math Second Exam'] * (6 / 6) * 3) +
+                (scores['Language 1'] * (3 / 8) * 2) +
+                (scores['Language 2'] * (3 / 8) * 3) +
+                (scores['Language 3'] * (3 / 8) * 3) +
+                (scores['Fluid Physics'] * (6 / 5) * 1) +
+                (scores['PM Physics'] * (6 / 5) * 2) +
+                (scores['Termo Physics'] * (6 / 5) * 2) +
+                (scores['AOM First Written'] * (2 / 3) * 1) +
+                (scores['AOM Second Written'] * (2 / 3) * 2) +
+                (scores['Lab'] * 2) +
+                (scores['Frontend PW'] * (11 / 4) * 0.1) +
+                (scores['Frontend Project'] * (11 / 4) * 0.4) +
+                (scores['Frontend Exam'] * (11 / 4) * 0.5) +
+                (scores['DSA PW Project'] * (11 / 4) * 1) +
+                (scores['DSA Exam'] * (11 / 4) * 1) +
+                (scores['CSPC PW'] * (11 / 4) * 0.4) +
+                (scores['CSPC First Exam'] * (11 / 4) * 0.2) +
                 (scores['CSPC Second Exam'] * (11 / 4) * 0.4);
-            
+        
             const totalCoefficients = 30;
             const weightedAverage = weightedSum / totalCoefficients;
-
+        
             // Display the weighted average
             document.getElementById('result').textContent = `Your Weighted Average is: ${weightedAverage.toFixed(2)}`;
-
+        
             // Classify scores
             displayClassifications(scores);
-
+        
             // Create chart to display subject performance
             createChart(scores);
         });
-
+        
+        // Retrieve scores from localStorage on page load
+        window.addEventListener('load', function () {
+            const savedScores = localStorage.getItem('cs_scores');
+            console.log(savedScores);
+        
+            if (savedScores) {
+                const scores = JSON.parse(savedScores);
+        
+                // Populate the inputs one by one based on their corresponding keys
+                if (scores['Math Notebook'] !== undefined) {
+                    document.getElementById('noteBookScore').value = scores['Math Notebook'];
+                }
+                if (scores['Math First Exam'] !== undefined) {
+                    document.getElementById('firstWrittenExamScore').value = scores['Math First Exam'];
+                }
+                if (scores['Math Second Exam'] !== undefined) {
+                    document.getElementById('secondWrittenExamScore').value = scores['Math Second Exam'];
+                }
+                if (scores['Language 1'] !== undefined) {
+                    document.getElementById('lang1Score').value = scores['Language 1'];
+                }
+                if (scores['Language 2'] !== undefined) {
+                    document.getElementById('lang2Score').value = scores['Language 2'];
+                }
+                if (scores['Language 3'] !== undefined) {
+                    document.getElementById('lang3Score').value = scores['Language 3'];
+                }
+                if (scores['Fluid Physics'] !== undefined) {
+                    document.getElementById('fluidScore').value = scores['Fluid Physics'];
+                }
+                if (scores['PM Physics'] !== undefined) {
+                    document.getElementById('pmScore').value = scores['PM Physics'];
+                }
+                if (scores['Termo Physics'] !== undefined) {
+                    document.getElementById('termoScore').value = scores['Termo Physics'];
+                }
+                if (scores['AOM First Written'] !== undefined) {
+                    document.getElementById('aomFirstWrittenScore').value = scores['AOM First Written'];
+                }
+                if (scores['AOM Second Written'] !== undefined) {
+                    document.getElementById('aomSecondWrittenScore').value = scores['AOM Second Written'];
+                }
+                if (scores['Lab'] !== undefined) {
+                    document.getElementById('labScore').value = scores['Lab'];
+                }
+                if (scores['Frontend PW'] !== undefined) {
+                    document.getElementById('frontPwScore').value = scores['Frontend PW'];
+                }
+                if (scores['Frontend Project'] !== undefined) {
+                    document.getElementById('frontProjectScore').value = scores['Frontend Project'];
+                }
+                if (scores['Frontend Exam'] !== undefined) {
+                    document.getElementById('frontExamScore').value = scores['Frontend Exam'];
+                }
+                if (scores['DSA PW Project'] !== undefined) {
+                    document.getElementById('dsaPwProjectScore').value = scores['DSA PW Project'];
+                }
+                if (scores['DSA Exam'] !== undefined) {
+                    document.getElementById('dsaExamScore').value = scores['DSA Exam'];
+                }
+                if (scores['CSPC PW'] !== undefined) {
+                    document.getElementById('cspcPwScore').value = scores['CSPC PW'];
+                }
+                if (scores['CSPC First Exam'] !== undefined) {
+                    document.getElementById('cspcFirstExamScore').value = scores['CSPC First Exam'];
+                }
+                if (scores['CSPC Second Exam'] !== undefined) {
+                    document.getElementById('cspcSecondExamScore').value = scores['CSPC Second Exam'];
+                }
+            }
+        });
+        
         function classifyScore(score) {
             if (score >= 13.5) return 'Perfect';
             if (score >= 11.5) return 'Good';
             if (score >= 10) return 'Enough';
             return 'Fail';
         }
-
+        
         function displayClassifications(scores) {
             let classifications = '';
             for (const [subject, score] of Object.entries(scores)) {
@@ -218,13 +292,13 @@
             }
             document.getElementById('result').innerHTML += classifications;
         }
-
+        
         function createChart(scores) {
             const ctx = document.getElementById('performanceChart').getContext('2d');
-            
+        
             const labels = Object.keys(scores);
             const data = Object.values(scores);
-
+        
             new Chart(ctx, {
                 type: 'bar',
                 data: {
@@ -246,6 +320,7 @@
                 }
             });
         }
+        
     </script>
 
 </body>

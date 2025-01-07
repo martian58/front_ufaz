@@ -115,6 +115,7 @@ def submit():
     answer = bot.response(user_input)
     return answer
 
+# L1S1
 @app.route('/cs_average')
 def cs_average():
     return render_template('app/cs_average.html')
@@ -130,6 +131,24 @@ def ge_average():
 @app.route('/pe_average')
 def pe_average():
     return render_template('app/pe_average.html')
+
+#L1S2
+
+@app.route('/cs_average_s2')
+def cs_average_s2():
+    return render_template('app/coming_soon.html')
+
+@app.route('/ce_average_s2')
+def ce_average_s2():
+    return render_template('app/coming_soon.html')
+
+@app.route('/ge_average_s2')
+def ge_average_s2():
+    return render_template('app/coming_soon.html')
+
+@app.route('/pe_average_s2')
+def pe_average_s2():
+    return render_template('app/coming_soon.html')
 
 @app.route('/average')
 def index_average():

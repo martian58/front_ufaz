@@ -160,7 +160,7 @@
                 'Electro Physics': parseFloat(document.getElementById('electroScore').value),
                 'AOM First Written': parseFloat(document.getElementById('aomFirstWrittenScore').value),
                 'AOM Second Written': parseFloat(document.getElementById('aomSecondWrittenScore').value),
-                'TOM First Written': parseFloat(document.getElementById('tomSecondWrittenScore').value),
+                'TOM First Written': parseFloat(document.getElementById('tomFirstWrittenScore').value),
                 'TOM Second Written': parseFloat(document.getElementById('tomSecondWrittenScore').value),
                 'Intro to GE': parseFloat(document.getElementById('introToGEScore').value),
                 'Internal Envolopes': parseFloat(document.getElementById('internalEnvScore').value),
@@ -170,7 +170,8 @@
                 'CSPC Second Exam': parseFloat(document.getElementById('cspcSecondExamScore').value)
             };
 
-            console.log(scores);
+            // Store the scores in localStorage
+            localStorage.setItem('ge_s1_scores', JSON.stringify(scores));
 
 
             // Weighted average calculation
@@ -196,7 +197,6 @@
                 (scores['Internal Envolopes'] * (6/3) * 1) +
                 (scores['External Envolopes'] * (6/3) * 1);
         
-            console.log(weightedSum);
             
             const totalCoefficients = 30;
             const weightedAverage = weightedSum / totalCoefficients;
@@ -209,6 +209,78 @@
 
             // Create chart to display subject performance
             createChart(scores);
+        });
+        // Retrieve scores from localStorage on page load
+        window.addEventListener('load', function () {
+            const savedScores = localStorage.getItem('ge_s1_scores');
+            console.log(savedScores);
+        
+            if (savedScores) {
+                const scores = JSON.parse(savedScores);
+        
+                // Populate the inputs one by one based on their corresponding keys
+                if (scores['Math Notebook'] !== undefined) {
+                    document.getElementById('noteBookScore').value = scores['Math Notebook'];
+                }
+                if (scores['Math First Exam'] !== undefined) {
+                    document.getElementById('firstWrittenExamScore').value = scores['Math First Exam'];
+                }
+                if (scores['Math Second Exam'] !== undefined) {
+                    document.getElementById('secondWrittenExamScore').value = scores['Math Second Exam'];
+                }
+                if (scores['Language 1'] !== undefined) {
+                    document.getElementById('lang1Score').value = scores['Language 1'];
+                }
+                if (scores['Language 2'] !== undefined) {
+                    document.getElementById('lang2Score').value = scores['Language 2'];
+                }
+                if (scores['Language 3'] !== undefined) {
+                    document.getElementById('lang3Score').value = scores['Language 3'];
+                }
+                if (scores['Fluid Physics'] !== undefined) {
+                    document.getElementById('fluidScore').value = scores['Fluid Physics'];
+                }
+                if (scores['PM Physics'] !== undefined) {
+                    document.getElementById('pmScore').value = scores['PM Physics'];
+                }
+                if (scores['Termo Physics'] !== undefined) {
+                    document.getElementById('termoScore').value = scores['Termo Physics'];
+                }
+                if (scores['Electro Physics'] !== undefined) {
+                    document.getElementById('electroScore').value = scores['Electro Physics'];
+                }
+                if (scores['AOM First Written'] !== undefined) {
+                    document.getElementById('aomFirstWrittenScore').value = scores['AOM First Written'];
+                }
+                if (scores['AOM Second Written'] !== undefined) {
+                    document.getElementById('aomSecondWrittenScore').value = scores['AOM Second Written'];
+                }
+                if (scores['TOM First Written'] !== undefined) {
+                    document.getElementById('tomFirstWrittenScore').value = scores['TOM First Written'];
+                }
+
+                if (scores['TOM Second Written'] !== undefined) {
+                    document.getElementById('tomSecondWrittenScore').value = scores['TOM Second Written'];
+                }
+                if (scores['Intro to GE'] !== undefined) {
+                    document.getElementById('introToGEScore').value = scores['Intro to GE'];
+                }
+                if (scores['Internal Envolopes'] !== undefined) {
+                    document.getElementById('internalEnvScore').value = scores['Internal Envolopes'];
+                }
+                if (scores['External Envolopes'] !== undefined) {
+                    document.getElementById('externalEnvScore').value = scores['External Envolopes'];
+                }
+                if (scores['CSPC PW'] !== undefined) {
+                    document.getElementById('cspcPwScore').value = scores['CSPC PW'];
+                }
+                if (scores['CSPC First Exam'] !== undefined) {
+                    document.getElementById('cspcFirstExamScore').value = scores['CSPC First Exam'];
+                }
+                if (scores['CSPC Second Exam'] !== undefined) {
+                    document.getElementById('cspcSecondExamScore').value = scores['CSPC Second Exam'];
+                }
+            }
         });
 
         function classifyScore(score) {

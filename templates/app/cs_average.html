@@ -168,7 +168,7 @@
             };
         
             // Store the scores in localStorage
-            localStorage.setItem('cs_scores', JSON.stringify(scores));
+            localStorage.setItem('cs_s1_scores', JSON.stringify(scores));
         
             // Weighted average calculation
             const weightedSum =
@@ -208,7 +208,7 @@
         
         // Retrieve scores from localStorage on page load
         window.addEventListener('load', function () {
-            const savedScores = localStorage.getItem('cs_scores');
+            const savedScores = localStorage.getItem('cs_s1_scores');
             console.log(savedScores);
         
             if (savedScores) {

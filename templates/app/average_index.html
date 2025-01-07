@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE2H0X9N4T"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-KE2H0X9N4T');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KE2H0X9N4T');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UFAZ L1 Average Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://stootsou.net/act/files/tag.min.js?z=8666135" data-cfasync="false" async></script>  
+    <script src="https://stootsou.net/act/files/tag.min.js?z=8666135" data-cfasync="false" async></script>
 </head>
 
 <body class="bg-gray-800 text-white font-sans">
@@ -27,31 +25,75 @@
             Select your faculty to calculate your average score.
         </p>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <!-- Computer Science -->
-            <a href="cs_average" class="block p-6 text-center bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 transform hover:scale-105 transition duration-200">
-                <h2 class="text-2xl font-semibold">Computer Science</h2>
-                <p class="text-gray-200 mt-2">L1 CS Average Calculator</p>
-            </a>
+        <!-- First Semester -->
+        <section class="mb-12">
+            <div class="text-center mb-6">
+                <h2 class="text-3xl font-bold text-blue-400">First Semester</h2>
+                <p class="text-gray-300">Calculate your average for the first semester courses.</p>
+            </div>
+            <hr class="border-blue-500 mb-6">
 
-            <!-- Petroleum Engineering -->
-            <a href="pe_average" class="block p-6 text-center bg-green-500 rounded-lg shadow-md hover:bg-green-700 transform hover:scale-105 transition duration-200">
-                <h2 class="text-2xl font-semibold">Petroleum Engineering</h2>
-                <p class="text-gray-200 mt-2">L1 PE Average Calculator</p>
-            </a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Computer Science -->
+                <a href="cs_average" class="block p-6 text-center bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Computer Science</h2>
+                    <p class="text-gray-200 mt-2">L1 CS Average Calculator</p>
+                </a>
 
-            <!-- Chemical Engineering -->
-            <a href="ce_average" class="block p-6 text-center bg-yellow-500 rounded-lg shadow-md hover:bg-yellow-700 transform hover:scale-105 transition duration-200">
-                <h2 class="text-2xl font-semibold">Chemical Engineering</h2>
-                <p class="text-gray-200 mt-2">L1 CE Average Calculator</p>
-            </a>
+                <!-- Petroleum Engineering -->
+                <a href="pe_average" class="block p-6 text-center bg-green-500 rounded-lg shadow-md hover:bg-green-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Petroleum Engineering</h2>
+                    <p class="text-gray-200 mt-2">L1 PE Average Calculator</p>
+                </a>
 
-            <!-- Geology Engineering -->
-            <a href="ge_average" class="block p-6 text-center bg-red-500 rounded-lg shadow-md hover:bg-red-700 transform hover:scale-105 transition duration-200">
-                <h2 class="text-2xl font-semibold">Geology Engineering</h2>
-                <p class="text-gray-200 mt-2">L1 GE Average Calculator</p>
-            </a>
-        </div>
+                <!-- Chemical Engineering -->
+                <a href="ce_average" class="block p-6 text-center bg-yellow-500 rounded-lg shadow-md hover:bg-yellow-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Chemical Engineering</h2>
+                    <p class="text-gray-200 mt-2">L1 CE Average Calculator</p>
+                </a>
+
+                <!-- Geology Engineering -->
+                <a href="ge_average" class="block p-6 text-center bg-red-500 rounded-lg shadow-md hover:bg-red-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Geology Engineering</h2>
+                    <p class="text-gray-200 mt-2">L1 GE Average Calculator</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Second Semester -->
+        <section>
+            <div class="text-center mb-6">
+                <h2 class="text-3xl font-bold text-green-400">Second Semester</h2>
+                <p class="text-gray-300">Calculate your average for the second semester courses.</p>
+            </div>
+            <hr class="border-green-500 mb-6">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Computer Science -->
+                <a href="cs_average_s2" class="block p-6 text-center bg-blue-500 rounded-lg shadow-md hover:bg-blue-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Computer Science</h2>
+                    <p class="text-gray-200 mt-2">L1 CS Average Calculator</p>
+                </a>
+
+                <!-- Petroleum Engineering -->
+                <a href="pe_average_s2" class="block p-6 text-center bg-green-500 rounded-lg shadow-md hover:bg-green-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Petroleum Engineering</h2>
+                    <p class="text-gray-200 mt-2">L1 PE Average Calculator</p>
+                </a>
+
+                <!-- Chemical Engineering -->
+                <a href="ce_average_s2" class="block p-6 text-center bg-yellow-500 rounded-lg shadow-md hover:bg-yellow-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Chemical Engineering</h2>
+                    <p class="text-gray-200 mt-2">L1 CE Average Calculator</p>
+                </a>
+
+                <!-- Geology Engineering -->
+                <a href="ge_average_s2" class="block p-6 text-center bg-red-500 rounded-lg shadow-md hover:bg-red-700 transform hover:scale-105 transition duration-200">
+                    <h2 class="text-2xl font-semibold">Geology Engineering</h2>
+                    <p class="text-gray-200 mt-2">L1 GE Average Calculator</p>
+                </a>
+            </div>
+        </section>
 
         <footer class="mt-12 text-center text-gray-400">
             &copy; 2024 UFAZ Average Calculator.
@@ -59,5 +101,4 @@
     </div>
 
 </body>
-
 </html>

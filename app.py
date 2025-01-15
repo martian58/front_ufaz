@@ -158,6 +158,7 @@ def index_average():
 @app.route('/grade_me')
 def grade_me():
     return render_template('app/grade_me.html')
+
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])
 def save_message():
@@ -195,47 +196,6 @@ def save_message():
         app.logger.error(f"Error saving message: {e}", exc_info=True)
         return jsonify({"success": False, "message": "There was an error saving the message."}), 500
     
-# Route to render the admin console
-@app.route('/console-admin/<password_slug>')
-def console_admin(password_slug):
-
-    with open('password.txt', 'r') as file:
-        password = file.read().strip()
-    if password_slug == password:
-
-        return render_template('app/console.html')  
-    else:
-        return render_template('app/index.html')
-    
-
-# Route to handle JSON data submission for terminal commands
-@app.route("/execute-command", methods=["POST"])
-def execute_command():
-    try:
-        # Get the command from the request
-        data = request.get_json()
-        command = data.get("command")
-
-        if not command:
-            return jsonify({"success": False, "message": "No command provided"}), 400
-
-        # Execute the command using subprocess
-        app.logger.debug(f"Executing command: {command}")
-        result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-        if result.returncode == 0:
-            output = result.stdout
-            app.logger.info(f"Command executed successfully: {output}")
-        else:
-            output = result.stderr
-            app.logger.error(f"Command execution failed: {output}")
-
-        return jsonify({"success": True, "output": output}), 200
-
-    except Exception as e:
-        app.logger.error(f"Error executing command: {e}", exc_info=True)
-        return jsonify({"success": False, "message": "Error executing the command"}), 500
-
 
 @app.route('/favicon.ico')
 def favicon():

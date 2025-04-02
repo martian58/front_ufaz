@@ -209,7 +209,6 @@
         // Retrieve scores from localStorage on page load
         window.addEventListener('load', function () {
             const savedScores = localStorage.getItem('cs_s1_scores');
-            console.log(savedScores);
         
             if (savedScores) {
                 const scores = JSON.parse(savedScores);

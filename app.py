@@ -148,7 +148,7 @@ def ge_average_s2():
 
 @app.route('/pe_average_s2')
 def pe_average_s2():
-    return render_template('app/coming_soon.html')
+    return render_template('app/semester_2/pe_average_s2.html')
 
 @app.route('/average')
 def index_average():

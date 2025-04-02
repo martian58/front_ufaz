@@ -140,7 +140,7 @@ def cs_average_s2():
 
 @app.route('/ce_average_s2')
 def ce_average_s2():
-    return render_template('app/coming_soon.html')
+    return render_template('app/semester_2/ce_average_s2.html')
 
 @app.route('/ge_average_s2')
 def ge_average_s2():
@@ -205,4 +205,4 @@ def favicon():
 
 if __name__ == '__main__':
 
-    app.run(debug=True, port=5050)
+    app.run(debug=True, port=5050, host='0.0.0.0')

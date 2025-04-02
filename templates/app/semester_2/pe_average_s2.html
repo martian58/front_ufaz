@@ -23,7 +23,7 @@
 <body class="bg-gray-800 text-white font-sans">
 
     <div class="max-w-4xl mx-auto mt-10 p-8 bg-gray-900 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-semibold mb-6 text-center text-blue-500">CE L1S2 Average Calculator</h1>
+        <h1 class="text-3xl font-semibold mb-6 text-center text-blue-500">PE L1S2 Average Calculator</h1>
     
         <form id="scoreForm" class="space-y-8">
             <!-- Math Inputs -->
@@ -96,42 +96,31 @@
                     <label for="tom2FirstWrittenScore" class="block text-lg font-medium">TOM2 First Written Score</label>
                     <input type="number" step="0.01" id="tom2FirstWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
                 </div>
-                <div class="space-y-2">
-                    <label for="tom2SecondWrittenScore" class="block text-lg font-medium">TOM2 Second Written Score</label>
-                    <input type="number" step="0.01" id="tom2SecondWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
-                </div>
-                <div class="space-y-2">
-                    <label for="labScore" class="block text-lg font-medium">Lab Score</label>
-                    <input type="number" step="0.01" id="labScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
-                </div>
             </div>
     
-            <!-- Chemical Engineering Inputs -->
+            <!-- Petroleum Geology Inputs -->
             <div>
-                <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">Chemical Engineering</h2>
+                <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">Petroleum Geology</h2>
                 <div class="space-y-2">
-                    <label for="heat-transfer-first-exam" class="block text-lg font-medium">Heat Transfer First Exam Score</label>
-                    <input type="number" step="0.01" id="heat-transfer-first-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                    <label for="heat-transfer-first-exam" class="block text-lg font-medium">Drilling Activity and Techniques</label>
+                    <input type="number" step="0.01" id="drilling-activity-and-techniques" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
                 </div>
                 <div class="space-y-2">
-                    <label for="heat-transfer-second-exam" class="block text-lg font-medium">Heat Transfer Second Exam Score</label>
-                    <input type="number" step="0.01" id="heat-transfer-second-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                    <label for="heat-transfer-second-exam" class="block text-lg font-medium">Plate Tectonics</label>
+                    <input type="number" step="0.01" id="plate-tectonics" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
                 </div>
                 <div class="space-y-2">
-                    <label for="process-diagram-homework" class="block text-lg font-medium">Process Diagram HomeWork</label>
-                    <input type="number" step="0.01" id="process-diagram-homework" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                    <label for="process-diagram-homework" class="block text-lg font-medium">Mineralogy & Petrology First</label>
+                    <input type="number" step="0.01" id="mineralogy-petrology-first" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
                 </div>
                 <div class="space-y-2">
-                    <label for="process-diagram-exam" class="block text-lg font-medium">Process Diagram Exam</label>
-                    <input type="number" step="0.01" id="process-diagram-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                    <label for="process-diagram-exam" class="block text-lg font-medium">Mineralogy & Petrology Second</label>
+                    <input type="number" step="0.01" id="mineralogy-petrology-second" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
                 </div>
-                <div class="space-y-2">
-                    <label for="material-science-for-ce-exam" class="block text-lg font-medium">Material Science for CE Exam</label>
-                    <input type="number" step="0.01" id="material-science-for-ce-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
-                </div>
+
             </div>
     
-            <button type="submit" class="mt-6 w-full py-3 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg">Calculate Weighted Average</button>
+            <button type="submit" class="mt-6 w-full py-3 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg">Calculate Average</button>
         </form>
     
         <div id="result" class="mt-6 text-xl text-center"></div>
@@ -159,17 +148,14 @@
                 'aom2FirstWrittenScore': parseFloat(document.getElementById('aom2FirstWrittenScore').value),
                 'aom2SecondWrittenScore': parseFloat(document.getElementById('aom2SecondWrittenScore').value),
                 'tom2FirstWrittenScore': parseFloat(document.getElementById('tom2FirstWrittenScore').value),
-                'tom2SecondWrittenScore': parseFloat(document.getElementById('tom2SecondWrittenScore').value),
-                'labScore': parseFloat(document.getElementById('labScore').value),
-                'heat-transfer-first-exam': parseFloat(document.getElementById('heat-transfer-first-exam').value),
-                'heat-transfer-second-exam': parseFloat(document.getElementById('heat-transfer-second-exam').value),
-                'process-diagram-homework': parseFloat(document.getElementById('process-diagram-homework').value),
-                'process-diagram-exam': parseFloat(document.getElementById('process-diagram-exam').value),
-                'material-science-for-ce-exam': parseFloat(document.getElementById('material-science-for-ce-exam').value)
+                'drilling-activity-and-techniques': parseFloat(document.getElementById('drilling-activity-and-techniques').value),
+                'plate-tectonics': parseFloat(document.getElementById('plate-tectonics').value),
+                'mineralogy-petrology-first': parseFloat(document.getElementById('mineralogy-petrology-first').value),
+                'mineralogy-petrology-second': parseFloat(document.getElementById('mineralogy-petrology-second').value),
             };
     
             // Store the scores in localStorage
-            localStorage.setItem('ce_s2_scores', JSON.stringify(scores));
+            localStorage.setItem('pe_s2_scores', JSON.stringify(scores));
             
             // Weighted average calculation
             const weightedSum = 
@@ -183,16 +169,13 @@
                 (scores['waves-core'] * (6 / 2) * (1/3)) + 
                 (scores['optics-score'] * (6 / 2) * (1/3)) + 
                 (scores['physics-lab'] * (6 / 2) * 1) + 
-                (scores['aom2FirstWrittenScore'] * (9 / 3) * 1/3) + 
-                (scores['aom2SecondWrittenScore'] * (9 / 3) * 2/3) + 
-                (scores['tom2FirstWrittenScore'] * (9 / 3) * 1/3) + 
-                (scores['tom2SecondWrittenScore'] * (9 / 3) * 2/3) + 
-                (scores['labScore'] * (9/3)) + 
-                (scores['heat-transfer-first-exam'] * (6/3) * (1/2)) + 
-                (scores['heat-transfer-second-exam'] * (6/3) * (1/2)) + 
-                (scores['process-diagram-homework'] * (6/3) * (1/2)) +
-                (scores['process-diagram-exam'] * (6/3) * (1/2)) +
-                (scores['material-science-for-ce-exam'] * (6/3) * 1);
+                (scores['aom2FirstWrittenScore'] * (6 / 2) * 1/3) + 
+                (scores['aom2SecondWrittenScore'] * (6 / 2) * 2/3) + 
+                (scores['tom2FirstWrittenScore'] * (6 / 2) * 1) + 
+                (scores['drilling-activity-and-techniques'] * (9/4) * 1) + 
+                (scores['plate-tectonics'] * (9/4) * 1) + 
+                (scores['mineralogy-petrology-first'] * (9/4)*2 * (1/3)) +
+                (scores['mineralogy-petrology-second'] * (9/4)*2 * (2/3));
         
             
             const totalCoefficients = 30;
@@ -215,7 +198,7 @@
     
         // Retrieve scores from localStorage on page load
         window.addEventListener('load', function () {
-            const savedScores = localStorage.getItem('ce_s2_scores');
+            const savedScores = localStorage.getItem('pe_s2_scores');
         
             if (savedScores) {
                 const scores = JSON.parse(savedScores);
@@ -260,27 +243,17 @@
                 if (scores['tom2FirstWrittenScore'] !== undefined) {
                     document.getElementById('tom2FirstWrittenScore').value = scores['tom2FirstWrittenScore'];
                 }
-    
-                if (scores['tom2SecondWrittenScore'] !== undefined) {
-                    document.getElementById('tom2SecondWrittenScore').value = scores['tom2SecondWrittenScore'];
+                if (scores['drilling-activity-and-techniques'] !== undefined) {
+                    document.getElementById('drilling-activity-and-techniques').value = scores['drilling-activity-and-techniques'];
                 }
-                if (scores['labScore'] !== undefined) {
-                    document.getElementById('labScore').value = scores['labScore'];
+                if (scores['plate-tectonics'] !== undefined) {
+                    document.getElementById('plate-tectonics').value = scores['plate-tectonics'];
                 }
-                if (scores['heat-transfer-first-exam'] !== undefined) {
-                    document.getElementById('heat-transfer-first-exam').value = scores['heat-transfer-first-exam'];
+                if (scores['mineralogy-petrology-first'] !== undefined) {
+                    document.getElementById('mineralogy-petrology-first').value = scores['mineralogy-petrology-first'];
                 }
-                if (scores['heat-transfer-second-exam'] !== undefined) {
-                    document.getElementById('heat-transfer-second-exam').value = scores['heat-transfer-second-exam'];
-                }
-                if (scores['process-diagram-homework'] !== undefined) {
-                    document.getElementById('process-diagram-homework').value = scores['process-diagram-homework'];
-                }
-                if (scores['process-diagram-exam'] !== undefined) {
-                    document.getElementById('process-diagram-exam').value = scores['process-diagram-exam'];
-                }
-                if (scores['material-science-for-ce-exam'] !== undefined) {
-                    document.getElementById('material-science-for-ce-exam').value = scores['material-science-for-ce-exam'];
+                if (scores['mineralogy-petrology-second'] !== undefined) {
+                    document.getElementById('mineralogy-petrology-second').value = scores['mineralogy-petrology-second'];
                 }
             }
         })

@@ -1,1 +1,342 @@
-ge s2
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE2H0X9N4T"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KE2H0X9N4T');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L1 CE Average Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-800 text-white font-sans">
+
+    <div class="max-w-4xl mx-auto mt-10 p-8 bg-gray-900 rounded-lg shadow-lg">
+        <h1 class="text-3xl font-semibold mb-6 text-center text-blue-500">GE L1S2 Average Calculator</h1>
+    
+        <form id="scoreForm" class="space-y-8">
+            <!-- Math Inputs -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">Math</h2>
+                <div class="space-y-2">
+                    <label for="math-participation" class="block text-lg font-medium">Math Participation</label>
+                    <input type="number" step="0.01" id="math-participation" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="firstWrittenExamScore" class="block text-lg font-medium">Math First Exam Score</label>
+                    <input type="number" step="0.01" id="firstWrittenExamScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="secondWrittenExamScore" class="block text-lg font-medium">Math Second Exam Score</label>
+                    <input type="number" step="0.01" id="secondWrittenExamScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+            </div>
+    
+            <!-- Language Inputs -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">Language</h2>
+                <div class="space-y-2">
+                    <label for="lang1Score" class="block text-lg font-medium">Language 1 Score</label>
+                    <input type="number" step="0.01" id="lang1Score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="lang2Score" class="block text-lg font-medium">Language 2 Score</label>
+                    <input type="number" step="0.01" id="lang2Score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="lang3Score" class="block text-lg font-medium">Language 3 Score</label>
+                    <input type="number" step="0.01" id="lang3Score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+            </div>
+    
+            <!-- Physics Inputs -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">Physics</h2>
+                <div class="space-y-2">
+                    <label for="oscillators-score" class="block text-lg font-medium">Oscillators Exam Score</label>
+                    <input type="number" step="0.01" id="oscillators-score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="waves-core" class="block text-lg font-medium">Waves Exam Score</label>
+                    <input type="number" step="0.01" id="waves-core" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="optics-score" class="block text-lg font-medium">Optics Exam Score</label>
+                    <input type="number" step="0.01" id="optics-score" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="physics-lab" class="block text-lg font-medium">Physics Lab</label>
+                    <input type="number" step="0.01" id="physics-lab" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+            </div>
+    
+            <!-- Chemistry Inputs -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">Chemistry</h2>
+                <div class="space-y-2">
+                    <label for="aom2FirstWrittenScore" class="block text-lg font-medium">AOM2 First Written Score</label>
+                    <input type="number" step="0.01" id="aom2FirstWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="aom2SecondWrittenScore" class="block text-lg font-medium">AOM2 Second Written Score</label>
+                    <input type="number" step="0.01" id="aom2SecondWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="tom2FirstWrittenScore" class="block text-lg font-medium">TOM2 First Written Score</label>
+                    <input type="number" step="0.01" id="tom2FirstWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="tom2SecondWrittenScore" class="block text-lg font-medium">TOM2 Second Written Score</label>
+                    <input type="number" step="0.01" id="tom2SecondWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+            </div>
+    
+            <!-- Petroleum Geology Inputs -->
+            <div>
+                <h2 class="text-2xl font-semibold mb-4 text-center text-green-400">Geosciences</h2>
+                <div class="space-y-2">
+                    <label for="heat-transfer-first-exam" class="block text-lg font-medium">Gravimetry and Isostasy Exam</label>
+                    <input type="number" step="0.01" id="gravimetry-and-isostasy-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="heat-transfer-second-exam" class="block text-lg font-medium">Plate Tectonics</label>
+                    <input type="number" step="0.01" id="plate-tectonics-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="process-diagram-homework" class="block text-lg font-medium">Mineralogy & Petrology First</label>
+                    <input type="number" step="0.01" id="mineralogy-petrology-first-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+                <div class="space-y-2">
+                    <label for="process-diagram-exam" class="block text-lg font-medium">Mineralogy & Petrology Second</label>
+                    <input type="number" step="0.01" id="mineralogy-petrology-second-exam" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
+
+            </div>
+    
+            <button type="submit" class="mt-6 w-full py-3 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg">Calculate Average</button>
+        </form>
+    
+        <div id="result" class="mt-6 text-xl text-center"></div>
+    
+        <canvas id="performanceChart" class="mt-8 max-w-full"></canvas>
+    </div>
+
+
+    <script>
+        document.getElementById('scoreForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+    
+            // Get the input values
+            const scores = {
+                'math-participation': parseFloat(document.getElementById('math-participation').value),
+                'firstWrittenExamScore': parseFloat(document.getElementById('firstWrittenExamScore').value),
+                'secondWrittenExamScore': parseFloat(document.getElementById('secondWrittenExamScore').value),
+                'lang1Score': parseFloat(document.getElementById('lang1Score').value),
+                'lang2Score': parseFloat(document.getElementById('lang2Score').value),
+                'lang3Score': parseFloat(document.getElementById('lang3Score').value),
+                'oscillators-score': parseFloat(document.getElementById('oscillators-score').value),
+                'waves-core': parseFloat(document.getElementById('waves-core').value),
+                'optics-score': parseFloat(document.getElementById('optics-score').value),
+                'physics-lab': parseFloat(document.getElementById('physics-lab').value),
+                'aom2FirstWrittenScore': parseFloat(document.getElementById('aom2FirstWrittenScore').value),
+                'aom2SecondWrittenScore': parseFloat(document.getElementById('aom2SecondWrittenScore').value),
+                'tom2FirstWrittenScore': parseFloat(document.getElementById('tom2FirstWrittenScore').value),
+                'tom2SecondWrittenScore': parseFloat(document.getElementById('tom2SecondWrittenScore').value),
+                'gravimetry-and-isostasy-exam': parseFloat(document.getElementById('gravimetry-and-isostasy-exam').value),
+                'plate-tectonics-exam': parseFloat(document.getElementById('plate-tectonics-exam').value),
+                'mineralogy-petrology-first-exam': parseFloat(document.getElementById('mineralogy-petrology-first-exam').value),
+                'mineralogy-petrology-second-exam': parseFloat(document.getElementById('mineralogy-petrology-second-exam').value),
+            };
+    
+            // Store the scores in localStorage
+            localStorage.setItem('ge_s2_scores', JSON.stringify(scores));
+            
+            // Weighted average calculation
+            const weightedSum = 
+                (scores['math-participation'] * (6 / 6) * 1) + 
+                (scores['firstWrittenExamScore'] * (6 / 6) * 2) + 
+                (scores['secondWrittenExamScore'] * (6 / 6) * 3) + 
+                (scores['lang1Score'] * (3 / 8) * 2) + 
+                (scores['lang2Score'] * (3 / 8) * 3) + 
+                (scores['lang3Score'] * (3 / 8) * 3) + 
+                (scores['oscillators-score'] * (6 / 2) * (1/3)) + 
+                (scores['waves-core'] * (6 / 2) * (1/3)) + 
+                (scores['optics-score'] * (6 / 2) * (1/3)) + 
+                (scores['physics-lab'] * (6 / 2) * 1) + 
+                (scores['aom2FirstWrittenScore'] * (6 / 2) * 1/3) + 
+                (scores['aom2SecondWrittenScore'] * (6 / 2) * 2/3) + 
+                (scores['tom2FirstWrittenScore'] * (6 / 2) * (1/3)) + 
+                (scores['tom2SecondWrittenScore'] * (6 / 2) * (2/3)) + 
+                (scores['gravimetry-and-isostasy-exam'] * (9/4) * 1) + 
+                (scores['plate-tectonics-exam'] * (9/4) * 1) + 
+                (scores['mineralogy-petrology-first-exam'] * (9/4)*2 * (1/3)) +
+                (scores['mineralogy-petrology-second-exam'] * (9/4)*2 * (2/3));
+        
+            
+            const totalCoefficients = 30;
+            const weightedAverage = weightedSum / totalCoefficients;
+    
+            // Display the weighted average
+            document.getElementById('result').innerHTML = `
+            <div class="p-4 bg-gray-900 text-white rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold text-center">Your Average is:</h2>
+                <p class="text-4xl font-extrabold text-center">${weightedAverage.toFixed(2)}</p>
+            </div>
+        `;
+    
+            // Classify scores
+            displayClassifications(scores);
+    
+            // Create chart to display subject performance
+            createChart(scores);
+        });
+    
+        // Retrieve scores from localStorage on page load
+        window.addEventListener('load', function () {
+            const savedScores = localStorage.getItem('ge_s2_scores');
+        
+            if (savedScores) {
+                const scores = JSON.parse(savedScores);
+        
+                // Populate the inputs one by one based on their corresponding keys
+                if (scores['math-participation'] !== undefined) {
+                    document.getElementById('math-participation').value = scores['math-participation'];
+                }
+                if (scores['firstWrittenExamScore'] !== undefined) {
+                    document.getElementById('firstWrittenExamScore').value = scores['firstWrittenExamScore'];
+                }
+                if (scores['secondWrittenExamScore'] !== undefined) {
+                    document.getElementById('secondWrittenExamScore').value = scores['secondWrittenExamScore'];
+                }
+                if (scores['lang1Score'] !== undefined) {
+                    document.getElementById('lang1Score').value = scores['lang1Score'];
+                }
+                if (scores['lang2Score'] !== undefined) {
+                    document.getElementById('lang2Score').value = scores['lang2Score'];
+                }
+                if (scores['lang3Score'] !== undefined) {
+                    document.getElementById('lang3Score').value = scores['lang3Score'];
+                }
+                if (scores['oscillators-score'] !== undefined) {
+                    document.getElementById('oscillators-score').value = scores['oscillators-score'];
+                }
+                if (scores['waves-core'] !== undefined) {
+                    document.getElementById('waves-core').value = scores['waves-core'];
+                }
+                if (scores['optics-score'] !== undefined) {
+                    document.getElementById('optics-score').value = scores['optics-score'];
+                }
+                if (scores['physics-lab'] !== undefined) {
+                    document.getElementById('physics-lab').value = scores['physics-lab'];
+                }
+                if (scores['aom2FirstWrittenScore'] !== undefined) {
+                    document.getElementById('aom2FirstWrittenScore').value = scores['aom2FirstWrittenScore'];
+                }
+                if (scores['aom2SecondWrittenScore'] !== undefined) {
+                    document.getElementById('aom2SecondWrittenScore').value = scores['aom2SecondWrittenScore'];
+                }
+                if (scores['tom2FirstWrittenScore'] !== undefined) {
+                    document.getElementById('tom2FirstWrittenScore').value = scores['tom2FirstWrittenScore'];
+                }
+                if (scores['tom2SecondWrittenScore'] !== undefined) {
+                    document.getElementById('tom2SecondWrittenScore').value = scores['tom2SecondWrittenScore'];
+                }
+                if (scores['gravimetry-and-isostasy-exam'] !== undefined) {
+                    document.getElementById('gravimetry-and-isostasy-exam').value = scores['gravimetry-and-isostasy-exam'];
+                }
+                if (scores['plate-tectonics-exam'] !== undefined) {
+                    document.getElementById('plate-tectonics-exam').value = scores['plate-tectonics-exam'];
+                }
+                if (scores['mineralogy-petrology-first-exam'] !== undefined) {
+                    document.getElementById('mineralogy-petrology-first-exam').value = scores['mineralogy-petrology-first-exam'];
+                }
+                if (scores['mineralogy-petrology-second-exam'] !== undefined) {
+                    document.getElementById('mineralogy-petrology-second-exam').value = scores['mineralogy-petrology-second-exam'];
+                }
+            }
+        })
+    
+        function classifyScore(score) {
+            if (score >= 13.5) return 'Perfect';
+            if (score >= 11.5) return 'Good';
+            if (score >= 10) return 'Enough';
+            return 'Fail';
+        }
+    
+        function displayClassifications(scores) {
+            let classifications = `
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-700">
+                        <thead class="bg-gray-800">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Subject</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Score</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Classification</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-gray-900 divide-y divide-gray-700">
+            `;
+        
+            for (const [subject, score] of Object.entries(scores)) {
+                const classification = classifyScore(score);
+                classifications += `
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-200">${subject}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">${score.toFixed(2)}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">${classification}</td>
+                    </tr>
+                `;
+            }
+        
+            classifications += `
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        
+            document.getElementById('result').innerHTML += classifications;
+        }
+    
+        function createChart(scores) {
+            const ctx = document.getElementById('performanceChart').getContext('2d');
+            
+            const labels = Object.keys(scores);
+            const data = Object.values(scores);
+    
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Subject Scores',
+                        data: data,
+                        backgroundColor: data.map(score => score >= 13.5 ? 'green' : (score >= 11.5 ? 'yellow' : 'red')),
+                        borderColor: 'white',
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: { beginAtZero: true },
+                        y: { beginAtZero: true, max: 20 },
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>

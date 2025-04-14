@@ -96,6 +96,10 @@
                     <label for="tom2FirstWrittenScore" class="block text-lg font-medium">TOM2 First Written Score</label>
                     <input type="number" step="0.01" id="tom2FirstWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
                 </div>
+                <div class="space-y-2">
+                    <label for="tom2FirstWrittenScore" class="block text-lg font-medium">TOM2 Second Written Score</label>
+                    <input type="number" step="0.01" id="tom2SecondWrittenScore" class="block w-full mb-2 p-2 border rounded-lg bg-gray-700 text-white" required>
+                </div>
             </div>
     
             <!-- Petroleum Geology Inputs -->
@@ -148,6 +152,7 @@
                 'aom2FirstWrittenScore': parseFloat(document.getElementById('aom2FirstWrittenScore').value),
                 'aom2SecondWrittenScore': parseFloat(document.getElementById('aom2SecondWrittenScore').value),
                 'tom2FirstWrittenScore': parseFloat(document.getElementById('tom2FirstWrittenScore').value),
+                'tom2SecondWrittenScore': parseFloat(document.getElementById('tom2SecondWrittenScore').value),
                 'drilling-activity-and-techniques': parseFloat(document.getElementById('drilling-activity-and-techniques').value),
                 'plate-tectonics': parseFloat(document.getElementById('plate-tectonics').value),
                 'mineralogy-petrology-first': parseFloat(document.getElementById('mineralogy-petrology-first').value),
@@ -171,7 +176,8 @@
                 (scores['physics-lab'] * (6 / 2) * 1) + 
                 (scores['aom2FirstWrittenScore'] * (6 / 2) * 1/3) + 
                 (scores['aom2SecondWrittenScore'] * (6 / 2) * 2/3) + 
-                (scores['tom2FirstWrittenScore'] * (6 / 2) * 1) + 
+                (scores['tom2FirstWrittenScore'] * (6 / 2) * (1/3)) + 
+                (scores['tom2SecondWrittenScore'] * (6 / 2) * (2/3)) + 
                 (scores['drilling-activity-and-techniques'] * (9/4) * 1) + 
                 (scores['plate-tectonics'] * (9/4) * 1) + 
                 (scores['mineralogy-petrology-first'] * (9/4)*2 * (1/3)) +

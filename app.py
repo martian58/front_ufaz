@@ -2,14 +2,7 @@ from flask import Flask, render_template, request, jsonify, Response, send_from_
 import logging
 from datetime import datetime
 import os
-import subprocess
-from bot import Bot
-from dotenv import load_dotenv
 
-
-load_dotenv()
-
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Initialize Flask app
 app = Flask(__name__, template_folder="templates", static_folder='static')
@@ -21,72 +14,6 @@ logging.basicConfig(level=logging.DEBUG)
 @app.route('/')
 def index():
     return render_template('app/index.html')
-
-# Route to render the CV without CSS
-@app.route('/cvnocss')
-def cvnocss():
-    return render_template('pw1/cvnocss.html')
-
-# Route to render the CV with CSS
-@app.route('/cvwithcss')
-def cvwithcss():
-    return render_template('pw1/cvwithcss.html')
-
-@app.route('/pw2')
-def pw2():
-    return render_template('pw2/pw2.html')
-
-@app.route('/pw2tail')
-def pw2tail():
-    return render_template('pw2/pw2_tail.html')
-
-
-@app.route('/pw3')
-def pw3():
-    return render_template('pw3/pw3.html')
-
-@app.route('/pw5')
-def pw5():
-    return render_template('pw5/pw5.html')
-
-
-@app.route('/pw6')
-def pw6():
-    
-    return render_template('pw6/home.html')
-
-@app.route('/pw6/ex1')
-def pw6_ex1():
-    return render_template('pw6/ex1.html')
-
-@app.route('/pw6/ex2')
-def pw6_ex2():
-    return render_template('pw6/ex2.html')
-
-@app.route('/pw6/ex3')
-def pw6_ex3():
-    return render_template('pw6/ex3.html')
-# Home Work Project
-
-@app.route('/step_1e')
-def step_1e():
-    return render_template('hw/step_1e.html')
-
-@app.route('/step_2a')
-def step_2a():
-    return render_template('hw/step_2a.html')
-
-@app.route('/step_3a')
-def step_3a():
-    return render_template('hw/step_3a.html')
-
-@app.route('/step_3b')
-def step_3b():
-    return render_template('hw/step_3b.html')
-
-@app.route('/step_3c')
-def step_3c():
-    return render_template('hw/step_3c.html')
 
 
 
@@ -104,16 +31,6 @@ def serve_sw():
         return send_from_directory(app.root_path, 'sw.js', mimetype='application/javascript')
     except Exception as e:
         return Response(f"An error occurred: {str(e)}", status=500)
-#AI
-
-@app.route('/submit', methods=['POST'])
-def submit():
-    bot = Bot(api_key=OPENAI_API_KEY)
-
-    user_input  = request.json.get('user_input')
-
-    answer = bot.response(user_input)
-    return answer
 
 # L1S1
 @app.route('/cs_average')
@@ -155,9 +72,6 @@ def index_average():
     return render_template('app/average_index.html')
 
 
-@app.route('/grade_me')
-def grade_me():
-    return render_template('app/grade_me.html')
 
 # Route to handle JSON data submission for contact form
 @app.route("/send-email", methods=["POST"])

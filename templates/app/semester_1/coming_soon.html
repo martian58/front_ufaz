@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE2H0X9N4T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-KE2H0X9N4T');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link rel="stylesheet" href="../../static/output.css">    
+    <script src="https://stootsou.net/act/files/tag.min.js?z=8666135" data-cfasync="false" async></script>
+</head>
+
+<body class="bg-gray-800 text-white font-sans min-h-screen flex items-center justify-center">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <a href="/" class="text-2xl font-bold text-blue-500 hover:text-blue-400">UFAZ Average Calculator</a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden sm:flex sm:space-x-4">
+                    <a href="/profile" class="text-white px-3 py-2 rounded-md text-sm font-medium bg-blue-500 hover:bg-blue-700">Profile</a>
+                    <a href="/logout" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="sm:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="sm:hidden hidden bg-gray-900">
+            <a href="/profile" class="block text-white px-4 py-2 bg-blue-500 hover:bg-blue-700">Profile</a>
+            <a href="/logout" class="block text-gray-300 hover:text-white px-4 py-2">Logout</a>
+        </div>
+    </nav>
+    <div class="text-center">
+        <h1 class="text-5xl font-bold text-blue-500 mb-4">Coming Soon</h1>
+        <div class="mt-8">
+            <a href="/average" class="text-blue-400 underline hover:text-blue-300 transition duration-200">
+                Back to Home
+            </a>
+        </div>
+    </div>
+    <script>
+        const mobileMenuButton = document.getElementById("mobileMenuButton");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        mobileMenuButton.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+</html>

@@ -20,7 +20,65 @@
 </head>
 
 <body class="bg-gray-800 text-white font-sans">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <a href="/" class="text-2xl font-bold text-blue-500 hover:text-blue-400">UFAZ Average Calculator</a>
 
+                <!-- Desktop Menu -->
+                <div class="hidden sm:flex sm:space-x-4">
+                    {% if current_user.is_authenticated %}
+                    <a href="/profile" class="text-white px-3 py-2 rounded-md text-sm font-medium bg-blue-500 hover:bg-blue-700">Profile</a>
+                    <a href="/logout" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                    {% else %}
+                    <a href="/login" class="text-blue-400 hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                    {% endif %}
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="sm:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="sm:hidden hidden bg-gray-900">
+            {% if current_user.is_authenticated %}
+            <a href="/profile" class="block text-white px-4 py-2 bg-blue-500 hover:bg-blue-700">Profile</a>
+            <a href="/logout" class="block text-gray-300 hover:text-white px-4 py-2">Logout</a>
+            {% else %}
+            <a href="/login" class="block text-blue-400 hover:text-blue-300 px-4 py-2">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+    <!-- Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-lg max-w-sm w-full relative">
+            <!-- Close Button -->
+            <button id="closeModalButton" class="absolute top-2 right-2 text-gray-500 hover:text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="p-6">
+                <h2 class="text-xl font-semibold mb-4 text-gray-800 text-center">Login for a Better Experience</h2>
+                <p class="text-gray-600 text-center mb-6">
+                    Log in to save your scores, track your progress, and enjoy a personalized experience.
+                </p>
+                <button id="loginButton" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Login Now
+                </button>
+            </div>
+        </div>
+    </div>
     <div class="max-w-4xl mx-auto mt-10 p-8 bg-gray-900 rounded-lg shadow-lg">
         <h1 class="text-3xl font-semibold mb-6 text-center text-blue-500">L1 PE Average Calculator</h1>
 
@@ -327,7 +385,14 @@
             });
         }
     </script>
+    <script>
+        const mobileMenuButton = document.getElementById("mobileMenuButton");
+        const mobileMenu = document.getElementById("mobileMenu");
 
+        mobileMenuButton.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
 </body>
 
 </html>

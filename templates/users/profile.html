@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-800 text-white font-sans">
+    <!-- Navbar -->
+    <nav class="bg-gray-900 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <a href="/" class="text-2xl font-bold text-blue-500 hover:text-blue-400">UFAZ Average Calculator</a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden sm:flex sm:space-x-4">
+                    <a href="/profile" class="text-white px-3 py-2 rounded-md text-sm font-medium bg-blue-500 hover:bg-blue-700">Profile</a>
+                    <a href="/logout" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="sm:hidden flex items-center">
+                    <button id="mobileMenuButton" class="text-gray-300 hover:text-white focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="sm:hidden hidden bg-gray-900">
+            <a href="/profile" class="block text-white px-4 py-2 bg-blue-500 hover:bg-blue-700">Profile</a>
+            <a href="/logout" class="block text-gray-300 hover:text-white px-4 py-2">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-gray-900 p-8 rounded-lg shadow-lg max-w-2xl w-full">
+            <!-- Profile Header -->
+            <div class="flex items-center justify-center mb-6">
+                <div class="relative">
+                    <!-- Default Profile Picture -->
+                    <img src="{{ current_user.profile_picture }}" alt="Profile Picture" class="w-24 h-24 rounded-full border-4 border-blue-500 shadow-md">
+                    <!-- Update Picture Button -->
+                    <!-- Upload Profile Picture -->
+                    <form id="uploadProfilePictureForm" enctype="multipart/form-data">
+                        <label for="profilePicInput" class="absolute bottom-0 right-0 bg-blue-500 text-white p-1 rounded-full cursor-pointer hover:bg-blue-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M17.5 6.5a2.5 2.5 0 01-4.95.5H3a1 1 0 00-1 1v8a1 1 0 001 1h14a1 1 0 001-1v-8a1 1 0 00-1-1h-3.55a2.5 2.5 0 014.05-1.5z" />
+                            </svg>
+                        </label>
+                        <input id="profilePicInput" type="file" name="profile_picture" accept="image/*" class="hidden">
+                    </form>
+                </div>
+            </div>
+
+            <!-- Profile Form -->
+            <form id="profileForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-lg font-medium mb-1">Username</label>
+                    <input type="text" id="username" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" placeholder="Enter your username" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-lg font-medium mb-1">Email</label>
+                    <input type="email" id="email" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" placeholder="Enter your email" required>
+                </div>
+                <div>
+                    <label for="faculty" class="block text-lg font-medium mb-1">Faculty</label>
+                    <select id="faculty" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600">
+                        <option value="" disabled selected>Select your faculty</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Petroleum Engineering">Petroleum Engineering</option>
+                        <option value="Chemical Engineering">Chemical Engineering</option>
+                        <option value="Geophysics Engineering">Geophysics Engineering</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="year" class="block text-lg font-medium mb-1">Year</label>
+                    <select id="year" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600">
+                        <option value="" disabled selected>Select your year</option>
+                        <script>
+                            for (let year = 2016; year <= 2025; year++) {
+                                document.write(`<option value="${year}">${year}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+                <div>
+                    <label for="semester" class="block text-lg font-medium mb-1">Semester</label>
+                    <select id="semester" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600">
+                        <option value="" disabled selected>Select your semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-700 transition">Update Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Fetch user profile data from the server
+        async function loadUserProfile() {
+            const response = await fetch('/get-profile');
+            const userData = await response.json();
+            console.log(userData); // Debugging line
+            document.getElementById("username").value = userData.username;
+            document.getElementById("email").value = userData.email;
+            document.getElementById("faculty").value = userData.faculty;
+            document.getElementById("year").value = userData.year;
+            document.getElementById("semester").value = userData.semester;
+        }
+
+        // Populate form on page load
+        window.addEventListener("load", loadUserProfile);
+
+        // Handle form submission
+        document.getElementById("profileForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const updatedData = {
+                username: document.getElementById("username").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                faculty: document.getElementById("faculty").value,
+                year: document.getElementById("year").value,
+                semester: document.getElementById("semester").value
+            };
+
+            const response = await fetch('/profile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(updatedData)
+            });
+
+            if (response.ok) {
+                alert("Profile updated successfully!");
+                loadUserProfile(); // Reload profile
+            } else {
+                const errorData = await response.json();
+                alert(`Error: ${errorData.error}`);
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById("mobileMenuButton");
+        const mobileMenu = document.getElementById("mobileMenu");
+        mobileMenuButton.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+    <script>
+        document.getElementById('profilePicInput').addEventListener('change', async function () {
+            const form = document.getElementById('uploadProfilePictureForm');
+            const formData = new FormData(form);
+    
+            // Send file to the server
+            const response = await fetch('/upload-profile-picture', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            const result = await response.json();
+            if (response.ok) {
+                alert(result.message);
+                document.getElementById('profilePicture').src = `/${result.profile_picture_url}`;
+            } else {
+                alert(result.error);
+            }
+        });
+    </script>
+</body>
+</html>

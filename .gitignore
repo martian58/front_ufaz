@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 migrations/
 static/uploads/
+db.sqlite3
 
 password.txt
 big/

@@ -43,8 +43,8 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Configurations
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
+# app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 
@@ -112,9 +112,9 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
     is_verified = db.Column(db.Boolean, default=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    last_updated = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    last_login = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+    last_updated = db.Column(db.DateTime, default=datetime.datetime.now())
+    last_login = db.Column(db.DateTime, default=datetime.datetime.now())
     is_deleted = db.Column(db.Boolean, default=False)
     is_banned = db.Column(db.Boolean, default=False)
 
@@ -151,7 +151,7 @@ class PasswordResetToken(db.Model):
         nullable=False
     )
     token = db.Column(db.String(150), unique=True, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
 
 class LoginSecurityCode(db.Model):
@@ -164,7 +164,7 @@ class LoginSecurityCode(db.Model):
         nullable=False
     )
     security_code = db.Column(db.String(150), unique=True, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
 class AverageScores(db.Model):
     __tablename__ = 'average_scores'
@@ -179,8 +179,8 @@ class AverageScores(db.Model):
     semester = db.Column(db.Enum(SemesterEnum), nullable=False)
     faculty = db.Column(db.Enum(FacultyEnum), nullable=False)
     average_score = db.Column(db.Float, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
+    updated_at = db.Column(db.DateTime, default=datetime.datetime.now())
     user = db.relationship('User', backref='average_scores')
     def __str__(self) -> str:
         return f"{self.user.username} - Semester:{self.semester} - Score: {self.average_score}"
@@ -256,7 +256,7 @@ def login():
             return jsonify({'error': 'Invalid credentials'}), 401
         
         login_user(user)
-        user.last_login = datetime.datetime.utcnow
+        user.last_login = datetime.datetime.now()
         db.session.commit()
 
         return jsonify({'message': 'Login successful'}), 200
@@ -459,7 +459,7 @@ def save_score():
         # Update existing record
         average_score.scores_base64 = scores_base64
         average_score.average_score = average
-        average_score.updated_at = datetime.datetime.utcnow
+        average_score.updated_at = datetime.datetime.now()
         db.session.commit()
 
     else:

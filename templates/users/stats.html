@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics</title>
+    <link rel="stylesheet" href="../../static/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="bg-gray-800 text-white font-sans">
+    <div class="min-h-screen flex flex-col">
+        <!-- Navbar -->
+        <nav class="bg-gray-900 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16 items-center">
+                    <a href="/" class="text-2xl font-bold text-blue-500 hover:text-blue-400">UFAZ Average Calculator</a>
+                    <a href="/profile" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Back to Profile</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Statistics Content -->
+        <main class="flex-grow p-6">
+            <h1 class="text-4xl font-bold mb-8 text-center">Statistics and Leaderboards</h1>
+
+            <!-- Overall Leaderboard -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold mb-4">Overall Leaderboard</h2>
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr>
+                                <th class="border-b border-gray-700 py-2 px-4">Rank</th>
+                                <th class="border-b border-gray-700 py-2 px-4">Alias</th>
+                                <th class="border-b border-gray-700 py-2 px-4">Average Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="overallLeaderboard">
+                            <!-- Rows will be dynamically added here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Subject-wise Leaderboard -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-semibold mb-4">Subject-Wise Leaderboard</h2>
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr>
+                                    <th class="border-b border-gray-700 py-2 px-4">Rank</th>
+                                    <th class="border-b border-gray-700 py-2 px-4">Alias</th>
+                                    <th class="border-b border-gray-700 py-2 px-4">Subject</th>
+                                    <th class="border-b border-gray-700 py-2 px-4">Score</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subjectLeaderboard">
+                                <!-- Rows will be dynamically added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Semester Leaderboard -->
+            <section>
+                <h2 class="text-3xl font-semibold mb-4">Semester Leaderboard</h2>
+                <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                    <canvas id="semesterChart" class="w-full h-64"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        async function fetchStatistics() {
+            const response = await fetch('/statistics-data');
+            const data = await response.json();
+
+            // Populate Overall Leaderboard
+            const overallLeaderboard = document.getElementById("overallLeaderboard");
+            overallLeaderboard.innerHTML = data.overall.map((item, index) => `
+                <tr>
+                    <td class="border-b border-gray-700 py-2 px-4">${index + 1}</td>
+                    <td class="border-b border-gray-700 py-2 px-4">${item.alias}</td>
+                    <td class="border-b border-gray-700 py-2 px-4">${item.average_score}</td>
+                </tr>
+            `).join("");
+
+            // Populate Subject-Wise Leaderboard
+            const subjectLeaderboard = document.getElementById("subjectLeaderboard");
+            subjectLeaderboard.innerHTML = data.subjects.map((item, index) => `
+                <tr>
+                    <td class="border-b border-gray-700 py-2 px-4">${index + 1}</td>
+                    <td class="border-b border-gray-700 py-2 px-4">${item.alias}</td>
+                    <td class="border-b border-gray-700 py-2 px-4">${item.subject}</td>
+                    <td class="border-b border-gray-700 py-2 px-4">${item.score}</td>
+                </tr>
+            `).join("");
+
+            // Populate Semester Chart
+            const ctx = document.getElementById('semesterChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: data.semester.labels,
+                    datasets: [{
+                        label: 'Average Score',
+                        data: data.semester.scores,
+                        backgroundColor: '#3B82F6',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                        },
+                    },
+                },
+            });
+        }
+
+        // Fetch statistics on page load
+        window.addEventListener("load", fetchStatistics);
+    </script>
+</body>
+
+</html>

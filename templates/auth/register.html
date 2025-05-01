@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../../static/output.css">
+</head>
+
+<body class="bg-gray-800 text-white font-sans">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-gray-900 p-8 rounded-lg shadow-lg max-w-md w-full">
+            <h1 class="text-3xl font-semibold mb-6 text-center text-blue-500">Register</h1>
+            <form id="registerForm" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-lg font-medium mb-1">Username</label>
+                    <input type="text" id="username" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" placeholder="Enter your username" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-lg font-medium mb-1">Email</label>
+                    <input type="email" id="email" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" placeholder="Enter your email" required>
+                </div>
+                <div>
+                    <label for="password" class="block text-lg font-medium mb-1">Password</label>
+                    <input type="password" id="password" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" placeholder="Enter your password" required>
+                </div>
+                <div>
+                    <label for="faculty" class="block text-lg font-medium mb-1">Faculty</label>
+                    <select id="faculty" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" required>
+                        <option value="" disabled selected>Select your faculty</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Petroleum Engineering">Petroleum Engineering</option>
+                        <option value="Chemical Engineering">Chemical Engineering</option>
+                        <option value="Geophysics Engineering">Geophysics Engineering</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="year" class="block text-lg font-medium mb-1">Year</label>
+                    <select id="year" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" required>
+                        <option value="" disabled selected>Select your year</option>
+                        <script>
+                            for (let year = 2016; year <= 2025; year++) {
+                                document.write(`<option value="${year}">${year}</option>`);
+                            }
+                        </script>
+                    </select>
+                </div>
+                <div>
+                    <label for="semester" class="block text-lg font-medium mb-1">Semester</label>
+                    <select id="semester" class="w-full p-3 rounded-lg bg-gray-700 border border-gray-600" required>
+                        <option value="" disabled selected>Select your semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-700 transition">Register</button>
+            </form>
+            <p class="mt-6 text-center text-gray-400">Already have an account? <a href="/login" class="text-blue-400 hover:underline">Login</a></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const faculty = document.getElementById('faculty').value;
+            const year = document.getElementById('year').value;
+            const semester = document.getElementById('semester').value;
+
+            const response = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password, faculty, year, semester })
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                window.location.href = "/login";
+            } else {
+                alert(result.error);
+            }
+        });
+    </script>
+</body>
+
+</html>

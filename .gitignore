@@ -2,7 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+migrations/
+static/uploads/
+db.sqlite3
 
 password.txt
 big/

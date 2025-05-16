@@ -513,7 +513,7 @@ def statistics_data():
                 'score': score
             })
 
-    subject_leaderboard = sorted(subject_leaderboard, key=lambda x: x['score'], reverse=True)[:10]
+    subject_leaderboard = sorted(subject_leaderboard, key=lambda x: x['score'], reverse=True)[:100]
 
     # Semester Leaderboard
     semester_data = AverageScores.query \

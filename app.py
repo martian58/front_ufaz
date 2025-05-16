@@ -497,7 +497,8 @@ def statistics_data():
     overall_data = [
         {
             'alias': f"{User.query.filter_by(user_id=item.user_id).first().username}", 
-            'average_score': round(item.average_score, 2)
+            'average_score': round(item.average_score, 2),
+            'faculty': f"{User.query.filter_by(user_id=item.user_id).first().faculty.value}",
         }
         for item in overall_leaderboard
     ]
@@ -510,6 +511,9 @@ def statistics_data():
             subject_leaderboard.append({
                 'alias': f"{User.query.filter_by(user_id=record.user_id).first().username}",
                 'subject': subject,
+                'faculty': f"{User.query.filter_by(user_id=record.user_id).first().faculty.value}",
+                'semester': f"{record.semester.value}",
+                'year': f"{User.query.filter_by(user_id=record.user_id).first().year.value}",
                 'score': score
             })
 

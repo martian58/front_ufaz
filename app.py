@@ -491,12 +491,12 @@ def statistics_data():
         .with_entities(AverageScores.user_id, db.func.avg(AverageScores.average_score).label('average_score')) \
         .group_by(AverageScores.user_id) \
         .order_by(db.func.avg(AverageScores.average_score).desc()) \
-        .limit(10) \
+        .limit(50) \
         .all()
 
     overall_data = [
         {
-            'alias': f"User {item.user_id[:5]}***",  # Anonymize user
+            'alias': f"{User.query.filter_by(user_id=item.user_id).first().username}", 
             'average_score': round(item.average_score, 2)
         }
         for item in overall_leaderboard
@@ -508,7 +508,7 @@ def statistics_data():
         scores = json.loads(base64.b64decode(record.scores_base64).decode('utf-8'))
         for subject, score in scores.items():
             subject_leaderboard.append({
-                'alias': f"User {record.user_id[:5]}***",  # Anonymize user
+                'alias': f"{User.query.filter_by(user_id=record.user_id).first().username}",
                 'subject': subject,
                 'score': score
             })

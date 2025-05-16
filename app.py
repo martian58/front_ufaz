@@ -47,6 +47,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
+from datetime import timedelta
+
+app.config['REMEMBER_COOKIE_DURATION'] = timedelta(weeks=24)
+
 
 # Initialize the database
 db = SQLAlchemy(app)
@@ -255,7 +259,7 @@ def login():
         if not bcrypt.check_password_hash(user.password, password):
             return jsonify({'error': 'Invalid credentials'}), 401
         
-        login_user(user)
+        login_user(user, remember=True)
         user.last_login = datetime.datetime.now()
         db.session.commit()
 
@@ -385,7 +389,6 @@ def get_profile():
         "year": user.year.value if user.semester else None,          # Convert Enum to string
         "semester": user.semester.value if user.semester else None  # Convert Enum to string
     }
-    print(data)
     return jsonify(data), 200
 
 

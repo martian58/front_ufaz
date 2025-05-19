@@ -491,13 +491,14 @@ def statistics_data():
         .with_entities(AverageScores.user_id, db.func.avg(AverageScores.average_score).label('average_score')) \
         .group_by(AverageScores.user_id) \
         .order_by(db.func.avg(AverageScores.average_score).desc()) \
-        .limit(10) \
+        .limit(50) \
         .all()
 
     overall_data = [
         {
-            'alias': f"User {item.user_id[:5]}***",  # Anonymize user
-            'average_score': round(item.average_score, 2)
+            'alias': f"{User.query.filter_by(user_id=item.user_id).first().username}", 
+            'average_score': round(item.average_score, 2),
+            'faculty': f"{User.query.filter_by(user_id=item.user_id).first().faculty.value}",
         }
         for item in overall_leaderboard
     ]
@@ -508,12 +509,15 @@ def statistics_data():
         scores = json.loads(base64.b64decode(record.scores_base64).decode('utf-8'))
         for subject, score in scores.items():
             subject_leaderboard.append({
-                'alias': f"User {record.user_id[:5]}***",  # Anonymize user
+                'alias': f"{User.query.filter_by(user_id=record.user_id).first().username}",
                 'subject': subject,
+                'faculty': f"{User.query.filter_by(user_id=record.user_id).first().faculty.value}",
+                'semester': f"{record.semester.value}",
+                'year': f"{User.query.filter_by(user_id=record.user_id).first().year.value}",
                 'score': score
             })
 
-    subject_leaderboard = sorted(subject_leaderboard, key=lambda x: x['score'], reverse=True)[:10]
+    subject_leaderboard = sorted(subject_leaderboard, key=lambda x: x['score'], reverse=True)[:100]
 
     # Semester Leaderboard
     semester_data = AverageScores.query \
